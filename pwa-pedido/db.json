@@ -7,11 +7,11 @@
     "itensCardapio": [
       {
         "id": 1,
-        "nome": "Hamburger de picanha",
+        "nome": "Hamburger de picanha com fritas",
         "descricao": "Pão, Bife 120g e picacanha",
         "valor": 15.00,
         "categoria": 2,
-        "img": "https://picsum.photos/50/50/?image="
+        "img": "https://picsum.photos"
       },
       {
         "id": 4,
@@ -19,7 +19,7 @@
         "descricao": "Porção 400g",
         "valor": 30.00,
         "categoria": 2,
-        "img": "https://picsum.photos/50/50/?image="
+        "img": "https://picsum.photos"
       },
       {
         "id": 2,
@@ -27,7 +27,7 @@
         "descricao": "500ML",
         "valor": 10.00,
         "categoria": 1,
-        "img": "https://picsum.photos/50/50/?image="
+        "img": "https://picsum.photos"
       },
       {
         "id": 3,
@@ -35,7 +35,7 @@
         "descricao": "500ML",
         "valor": 17.00,
         "categoria": 1,
-        "img": "https://picsum.photos/50/50/?image="
+        "img": "https://picsum.photos"
       },
       {
         "id": 4,
@@ -43,15 +43,15 @@
         "descricao": "500ML",
         "valor": 11.00,
         "categoria": 1,
-        "img": "https://picsum.photos/50/50/?image="
+        "img": "https://picsum.photos"
       },
       {
         "id": 5,
         "nome": "cerveja PILSEN",
-        "descricao": "500ML",
+        "descricao": "",
         "valor": 8.00,
         "categoria": 1,
-        "img": "https://picsum.photos/50/50/?image="
+        "img": "https://picsum.photos"
       },
       {
         "id": 6,
@@ -59,7 +59,7 @@
         "descricao": "500ML",
         "valor": 16.00,
         "categoria": 1,
-        "img": "https://picsum.photos/50/50/?image="
+        "img": "https://picsum.photos"
       },
       {
         "id": 7,
@@ -67,7 +67,7 @@
         "descricao": "500ML",
         "valor": 19.00,
         "categoria": 1,
-        "img": "https://picsum.photos/50/50/?image="
+        "img": "https://picsum.photos"
       },
       {
         "id": 8,
@@ -75,7 +75,7 @@
         "descricao": "500ML",
         "valor": 23.00,
         "categoria": 3,
-        "img": "https://picsum.photos/50/50/?image="
+        "img": "https://picsum.photos"
       },
       {
         "id": 9,
@@ -83,7 +83,7 @@
         "descricao": "500ML",
         "valor": 15.00,
         "categoria": 3,
-        "img": "https://picsum.photos/50/50/?image="
+        "img": "https://picsum.photos"
       },
       {
         "id": 10,
@@ -91,7 +91,7 @@
         "descricao": "500ML",
         "valor": 7.00,
         "categoria": 3,
-        "img": "https://picsum.photos/50/50/?image="
+        "img": "https://picsum.photos"
       },
       {
         "id": 11,
@@ -99,7 +99,7 @@
         "descricao": "500ML",
         "valor": 12.00,
         "categoria": 3,
-        "img": "https://picsum.phoatos/50/50/?image="
+        "img": "https://picsum.phoatos"
       }
     ],
     "categorias": [

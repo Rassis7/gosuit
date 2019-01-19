@@ -18,35 +18,54 @@
            refresh-message="Carregando..."
            color="secondary"
            :handler="refresher">
+
             <!--lista-->
             <q-list highlight v-for="(item, index) in cardapio.itens" v-bind:key="index">
               <q-list-header>{{item.categoria | uppercase}}</q-list-header>
                 <item-lista-produtos :itens-produtos="item.produtos"></item-lista-produtos>
             </q-list>
+
           </q-pull-to-refresh>
 
-          <!--botão carrinho-->
-          <button-cart v-if="showItemcarrinho"></button-cart>
+          <q-layout-footer :reveal="true">
+            <div class="row">
+              <q-toolbar color="positive" class="col-6">
+                <q-btn flat label="CHAMAR GARÇOM" @click="chamarGarcon(1)"/>
+            </q-toolbar>
+
+            <q-toolbar color="faded" class="col-6">
+              <q-btn flat label="FECHAR COMANDA" @click="chamarGarcon(2)"/>
+            </q-toolbar>
+            </div>
+          </q-layout-footer>
+
         </q-page>
 
     </q-page-container>
+
+    <modal-finalizar-pedido
+      v-if="openedPai === true"
+      :opened="openedPai"
+      :tipoChamado="tipoChamadoPai"
+      @resetarPropModalReaderQrCode="openedPai = false, tipoChamado = null"
+    />
 
   </q-layout>
 </template>
 <script>
 import tabsComponent from '../components/Tabs'
-import buttonCart from '../components/ButtonCart'
+import modalFinalizarPedido from '../components/ModalFinalizarPedido'
 import itemListaProdutos from '../components/ItemListaProdutos'
 import filtro from '../components/Filter'
 import mixin from '../mixins'
-import { mapActions, mapGetters, mapMutations } from 'vuex'
+import { mapActions, mapGetters } from 'vuex'
 
 export default {
   components: {
     tabsComponent,
-    buttonCart,
     itemListaProdutos,
-    filtro
+    filtro,
+    modalFinalizarPedido
   },
   name: 'cardapioPage',
   data () {
@@ -55,29 +74,16 @@ export default {
         itens: [],
         categorias: []
       },
-      infosMensa: null
+      infosMensa: null,
+      openedPai: false,
+      tipoChamadoPai: null
     }
   },
   computed: {
-    ...mapGetters([
-      'getItensCardapio',
-      'getExisteItemNoCarrinho',
-      'getCategorias']),
-    showItemcarrinho: {
-      get: function () {
-        return this.getExisteItemNoCarrinho
-      },
-      set: function (exibir) {
-        return exibir
-      }
-    }
+    ...mapGetters(['getItensCardapio', 'getCategorias'])
   },
   methods: {
     ...mapActions(['carregarCardapio']),
-    ...mapMutations(['LOAD_CARRINHO']),
-    mostrarBtnComponentCarrinho (exibirItem) {
-      this.itemNoCarrinho = exibirItem
-    },
     filtrarListaItens (params) {
       try {
         this.$q.loading.show()
@@ -116,8 +122,6 @@ export default {
           self.$q.loading.hide()
           mixin.response(500, 'Erro ao listar o cardápio')
         })
-        // fazer o load do carrinho
-      this.LOAD_CARRINHO()
     },
     refresher (done) {
       const load = new Promise((resolve, reject) => {
@@ -136,6 +140,10 @@ export default {
           console.error(e)
           done()
         })
+    },
+    chamarGarcon (tpChamado) {
+      this.openedPai = true
+      this.tipoChamadoPai = tpChamado
     }
   },
   mounted: function () {

@@ -5,7 +5,7 @@
        <!-- Imagem -->
         <q-item-side @click.native="itemModalListar(item)">
           <q-item-tile icon>
-            <img v-lazy="item.img + (index + parseInt(item.valor))" :alt="item.nome">
+            <img v-lazy="`${item.img}/50/50/?image=${(index + parseInt(item.valor))}`" :alt="item.nome" style="{width: 50px}">
           </q-item-tile>
         </q-item-side>
 
@@ -14,7 +14,7 @@
           <q-item-tile label>
             <span class="text-weight-medium">{{item.nome | uppercase}}</span>
           </q-item-tile>
-          <q-item-tile sublabel lines="2">{{item.descricao | uppercase}}</q-item-tile>
+          <q-item-tile v-if="item.descricao" sublabel lines="2">{{item.descricao | uppercase | limitarCaracteres(20)}}</q-item-tile>
         </q-item-main>
 
         <!-- Preço -->
@@ -31,7 +31,7 @@
         </q-item-side>
       </q-item>
 
-    <modal-item :toggle-modal="opened" :tela-carrinho="telaCarrinho" :item-escolhido="itemSelecionadoDaLista" @resetarPropModalListar="opened = false"></modal-item>
+    <modal-item :toggle-modal="opened" :item-escolhido="itemSelecionadoDaLista" @resetarPropModalListar="opened = false"></modal-item>
   </div>
 </template>
 

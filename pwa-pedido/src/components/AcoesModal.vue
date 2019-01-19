@@ -6,10 +6,16 @@
     @hide="onHide"
     :actions="[
       {
-        label: 'Trocar de mesa',
-        icon: 'cached',
+        label: 'Infomações sobre o local',
+        icon: 'info',
         color: 'blue',
-        handler: trocarMesa
+        handler: infosLocal
+      },
+      {
+        label: 'Avaliar',
+        icon: 'star',
+        color: 'warning',
+        handler: infosLocal
       },
       {},
       {
@@ -54,8 +60,8 @@ export default {
     logout () {
       this.$router.push('/')
     },
-    trocarMesa () {
-      this.openLeituraQrCode = true
+    infosLocal () {
+      //
     }
   }
 }

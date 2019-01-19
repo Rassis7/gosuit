@@ -69,6 +69,7 @@ module.exports = function (ctx) {
         'QCardSeparator',
         'QCardActions',
         'QModal',
+        'QModalLayout',
         'QInput',
         'QToolbar',
         'QToolbarTitle',

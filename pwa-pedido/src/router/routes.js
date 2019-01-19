@@ -33,21 +33,6 @@ const routes = [
     path: '/cardapio',
     component: () => import('pages/Cardapio.vue'),
     beforeEnter: existeToken
-  },
-  {
-    path: '/comanda',
-    component: () => import('pages/Comanda.vue'),
-    beforeEnter: existeToken
-  },
-  {
-    path: '/itensPedido',
-    component: () => import('pages/ItensPedido.vue'),
-    beforeEnter: existeToken
-  },
-  {
-    path: '/pedidoFinalizado',
-    component: () => import('pages/PedidoFinalizado.vue'),
-    beforeEnter: existeToken
   }
 ]
 
