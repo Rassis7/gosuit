@@ -9,6 +9,7 @@
           </q-item-tile>
         </q-item-side>
 
+
         <!-- Conteúdo -->
         <q-item-main @click.native="itemModalListar(item)">
           <q-item-tile label>
