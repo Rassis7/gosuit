@@ -30,11 +30,11 @@
           <q-layout-footer :reveal="true">
             <div class="row">
               <q-toolbar color="positive" class="col-6">
-                <q-btn flat label="CHAMAR GARÇOM" @click="chamarGarcon(1)"/>
+                <q-btn flat label="CHAMAR GARÇOM" @click="chamarGarcom(1)"/>
             </q-toolbar>
 
             <q-toolbar color="faded" class="col-6">
-              <q-btn flat label="FECHAR COMANDA" @click="chamarGarcon(2)"/>
+              <q-btn flat label="FECHAR COMANDA" @click="chamarGarcom(2)"/>
             </q-toolbar>
             </div>
           </q-layout-footer>
@@ -141,7 +141,7 @@ export default {
           done()
         })
     },
-    chamarGarcon (tpChamado) {
+    chamarGarcom (tpChamado) {
       this.openedPai = true
       this.tipoChamadoPai = tpChamado
     }

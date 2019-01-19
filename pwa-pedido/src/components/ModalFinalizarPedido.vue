@@ -1,6 +1,6 @@
 <template>
   <div>
-    <q-modal minimized v-model="openedComputed" @hide="resetarOpened()" :content-css="{minWidth: '90vw', minHeight: '20vh'}" :no-backdrop-dismiss="true">
+    <q-modal minimized v-model="openedComputed" @hide="resetarOpened()" :content-css="{minWidth: '90vw', minHeight: '20vh'}">
       <q-modal-layout>
         <q-toolbar slot="header">
           <q-toolbar-title>
@@ -9,17 +9,20 @@
         </q-toolbar>
 
           <q-card class="text-center" v-if="opened == true">
+
             <q-card-main>
               <p class="q-title">Aponte para o QrCode em sua mesa</p>
               <p class="text-faded">Esse passo é necessário, para que o garçom saiba qual mesa ele deve atender</p>
               <p><qr-code-reader @onDecode="onDecodePai" :pausedParam="paused"/></p>
             </q-card-main>
+
           </q-card>
 
         <q-toolbar slot="footer" color="white">
            <q-btn class="full-width" color="primary" label="FECHAR" @click="resetarOpened()"/>
         </q-toolbar>
 
+       <avaliacao-component :opened="openedAvaliacaoPai" @resetarPropModalAvaliacao="openedAvaliacaoPai = false"/>
       </q-modal-layout>
     </q-modal>
   </div>
@@ -27,14 +30,16 @@
 
 <script>
 import qrCodeReader from './QrCodeReader'
+import avaliacaoComponent from './Avaliacao'
 import mixins from '../mixins'
 
 export default {
   name: 'modalFinalizarPedidoComponent',
-  components: {qrCodeReader},
+  components: {qrCodeReader, avaliacaoComponent},
   data () {
     return {
-      paused: false
+      paused: false,
+      openedAvaliacaoPai: false
     }
   },
   props: {
@@ -72,6 +77,11 @@ export default {
 
         // metodo para chamar o garçom
         // this.tipoChamado //parametro que informa se é pedido ou fechar comanda
+        if (this.tipoChamado === 2) {
+          debugger
+          this.openedAvaliacaoPai = true
+        }
+        mixins.response(200, 'Chamado enviado com sucesso!')
 
         // enviar o pedido
       } catch (error) {

@@ -81,6 +81,7 @@ module.exports = function (ctx) {
         'QSpinner',
         'QSpinnerDots',
         'QToggle',
+        'QRating',
         'QTimelineEntry'
       ],
       directives: [

@@ -25,22 +25,26 @@
         handler: logout
       },
     ]"/>
+
+    <avaliacao-component :opened="openedAvaliacaoPai" @resetarPropModalAvaliacao="openedAvaliacaoPai = false"/>
   </div>
 </template>
 
 <script>
+import avaliacaoComponent from './Avaliacao'
 
 export default {
+  name: 'acoesModalComponent',
+  components: {avaliacaoComponent},
+  data () {
+    return {
+      openedAvaliacaoPai: false
+    }
+  },
   props: {
     toggleActionModal: {
       type: Boolean,
       default: false
-    }
-  },
-  name: 'AcoesModalComponent',
-  data () {
-    return {
-      openLeituraQrCode: false
     }
   },
   computed: {
@@ -61,7 +65,7 @@ export default {
       this.$router.push('/')
     },
     infosLocal () {
-      //
+      this.openedAvaliacaoPai = true
     }
   }
 }
