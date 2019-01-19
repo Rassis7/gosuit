@@ -1,0 +1,143 @@
+{
+  "logarMesaQrCode": 
+  {
+    "autorizado": true
+  },
+  "carregarCardapio" : {
+    "itensCardapio": [
+      {
+        "id": 1,
+        "nome": "Hamburger de picanha",
+        "descricao": "Pão, Bife 120g e picacanha",
+        "valor": 15.00,
+        "categoria": 2,
+        "img": "https://picsum.photos/50/50/?image="
+      },
+      {
+        "id": 4,
+        "nome": "Batata rústica",
+        "descricao": "Porção 400g",
+        "valor": 30.00,
+        "categoria": 2,
+        "img": "https://picsum.photos/50/50/?image="
+      },
+      {
+        "id": 2,
+        "nome": "cerveja RED",
+        "descricao": "500ML",
+        "valor": 10.00,
+        "categoria": 1,
+        "img": "https://picsum.photos/50/50/?image="
+      },
+      {
+        "id": 3,
+        "nome": "cerveja IPA",
+        "descricao": "500ML",
+        "valor": 17.00,
+        "categoria": 1,
+        "img": "https://picsum.photos/50/50/?image="
+      },
+      {
+        "id": 4,
+        "nome": "cerveja WELLS",
+        "descricao": "500ML",
+        "valor": 11.00,
+        "categoria": 1,
+        "img": "https://picsum.photos/50/50/?image="
+      },
+      {
+        "id": 5,
+        "nome": "cerveja PILSEN",
+        "descricao": "500ML",
+        "valor": 8.00,
+        "categoria": 1,
+        "img": "https://picsum.photos/50/50/?image="
+      },
+      {
+        "id": 6,
+        "nome": "cerveja LAGER RED",
+        "descricao": "500ML",
+        "valor": 16.00,
+        "categoria": 1,
+        "img": "https://picsum.photos/50/50/?image="
+      },
+      {
+        "id": 7,
+        "nome": "cerveja STOUT",
+        "descricao": "500ML",
+        "valor": 19.00,
+        "categoria": 1,
+        "img": "https://picsum.photos/50/50/?image="
+      },
+      {
+        "id": 8,
+        "nome": "Gin Tônica",
+        "descricao": "500ML",
+        "valor": 23.00,
+        "categoria": 3,
+        "img": "https://picsum.photos/50/50/?image="
+      },
+      {
+        "id": 9,
+        "nome": "Gin com REDBULL",
+        "descricao": "500ML",
+        "valor": 15.00,
+        "categoria": 3,
+        "img": "https://picsum.photos/50/50/?image="
+      },
+      {
+        "id": 10,
+        "nome": "Capirinha",
+        "descricao": "500ML",
+        "valor": 7.00,
+        "categoria": 3,
+        "img": "https://picsum.photos/50/50/?image="
+      },
+      {
+        "id": 11,
+        "nome": "Tropical",
+        "descricao": "500ML",
+        "valor": 12.00,
+        "categoria": 3,
+        "img": "https://picsum.phoatos/50/50/?image="
+      }
+    ],
+    "categorias": [
+      {
+        "id": 1,
+        "nome": "cervejas"
+      }, 
+      {
+        "id": 2,
+        "nome": "comidas"
+      },
+      {
+        "id": 3,
+        "nome": "drinks"
+      }
+    ]
+  },
+  "listarPedidos":[
+    {
+      "id": 1,
+      "dataHora": "2018-12-27 10:55:00",
+      "nome": "Hamburguer de picanha",
+      "quantidade": 1,
+      "valor": 28
+    },
+    {
+      "id": 3,
+      "dataHora": "2018-12-27 11:20:00",
+      "nome": "Cerveja IPA",
+      "quantidade": 2,
+      "valor": 12
+    },
+    {
+      "id": 2,
+     "dataHora": "2018-12-27 10:55:00",
+     "nome": "Cerveja RED",
+     "quantidade": 3,
+     "valor": 10.5
+    }
+  ]
+}
