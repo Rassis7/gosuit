@@ -22,24 +22,22 @@
            <q-btn class="full-width" color="primary" label="FECHAR" @click="resetarOpened()"/>
         </q-toolbar>
 
-       <avaliacao-component :opened="openedAvaliacaoPai" @resetarPropModalAvaliacao="openedAvaliacaoPai = false"/>
       </q-modal-layout>
     </q-modal>
+
   </div>
 </template>
 
 <script>
 import qrCodeReader from './QrCodeReader'
-import avaliacaoComponent from './Avaliacao'
 import mixins from '../mixins'
 
 export default {
   name: 'modalFinalizarPedidoComponent',
-  components: {qrCodeReader, avaliacaoComponent},
+  components: {qrCodeReader},
   data () {
     return {
-      paused: false,
-      openedAvaliacaoPai: false
+      paused: false
     }
   },
   props: {
@@ -78,8 +76,8 @@ export default {
         // metodo para chamar o garçom
         // this.tipoChamado //parametro que informa se é pedido ou fechar comanda
         if (this.tipoChamado === 2) {
-          debugger
-          this.openedAvaliacaoPai = true
+          // Chamo a modal de avaliação de pedidos
+          this.$emit('chamarModalAvaliacao')
         }
         mixins.response(200, 'Chamado enviado com sucesso!')
 

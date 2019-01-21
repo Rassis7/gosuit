@@ -48,6 +48,13 @@
       :opened="openedPai"
       :tipoChamado="tipoChamadoPai"
       @resetarPropModalReaderQrCode="openedPai = false, tipoChamado = null"
+      @chamarModalAvaliacao="abrirAvaliacao"
+    />
+
+    <avaliacao-component
+      v-if="openedAvaliacaoPai == true"
+      :opened="openedAvaliacaoPai"
+      @resetarPropModalAvaliacao="openedAvaliacaoPai = false"
     />
 
   </q-layout>
@@ -56,6 +63,7 @@
 import tabsComponent from '../components/Tabs'
 import modalFinalizarPedido from '../components/ModalFinalizarPedido'
 import itemListaProdutos from '../components/ItemListaProdutos'
+import avaliacaoComponent from '../components/Avaliacao'
 import filtro from '../components/Filter'
 import mixin from '../mixins'
 import { mapActions, mapGetters } from 'vuex'
@@ -65,7 +73,8 @@ export default {
     tabsComponent,
     itemListaProdutos,
     filtro,
-    modalFinalizarPedido
+    modalFinalizarPedido,
+    avaliacaoComponent
   },
   name: 'cardapioPage',
   data () {
@@ -76,7 +85,8 @@ export default {
       },
       infosMensa: null,
       openedPai: false,
-      tipoChamadoPai: null
+      tipoChamadoPai: null,
+      openedAvaliacaoPai: false
     }
   },
   computed: {
@@ -144,6 +154,9 @@ export default {
     chamarGarcom (tpChamado) {
       this.openedPai = true
       this.tipoChamadoPai = tpChamado
+    },
+    abrirAvaliacao () {
+      this.openedAvaliacaoPai = true
     }
   },
   mounted: function () {

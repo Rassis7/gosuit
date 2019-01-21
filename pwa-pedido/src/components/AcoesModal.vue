@@ -15,7 +15,7 @@
         label: 'Avaliar',
         icon: 'star',
         color: 'warning',
-        handler: infosLocal
+        handler: avaliacaoModal
       },
       {},
       {
@@ -65,6 +65,9 @@ export default {
       this.$router.push('/')
     },
     infosLocal () {
+      //
+    },
+    avaliacaoModal () {
       this.openedAvaliacaoPai = true
     }
   }

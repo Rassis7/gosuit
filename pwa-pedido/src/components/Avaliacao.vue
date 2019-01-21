@@ -1,6 +1,6 @@
 <template>
   <div>
-    <q-modal minimized v-model="openedComputed" @hide="resetarOpenedAvaliacao()" :content-css="{minWidth: '90vw', minHeight: '20vh'}">
+    <q-modal minimized v-model="openedAvaliacaoComputed" @hide="resetarOpenedAvaliacao" :content-css="{minWidth: '90vw', minHeight: '20vh'}">
       <q-modal-layout>
         <q-toolbar slot="header">
           <q-toolbar-title>
@@ -62,7 +62,7 @@ export default {
     }
   },
   computed: {
-    openedComputed: {
+    openedAvaliacaoComputed: {
       get: function () {
         return this.opened
       },
