@@ -9,6 +9,7 @@ import cardapio from './cardapio'
 import carrinho from './carrinho'
 import comanda from './comanda'
 import pedido from './pedido'
+import avaliacao from './avaliacao'
 
 Vue.use(Vuex)
 
@@ -26,6 +27,7 @@ export default function (/* { ssrContext } */) {
       usuario,
       carrinho,
       comanda,
+      avaliacao,
       pedido,
       cardapio
     }

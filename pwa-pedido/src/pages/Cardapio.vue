@@ -27,7 +27,7 @@
 
           </q-pull-to-refresh>
 
-          <q-layout-footer :reveal="true">
+          <q-layout-footer :reveal="true" class="text-center">
             <div class="row">
               <q-toolbar color="positive" class="col-6">
                 <q-btn flat label="CHAMAR GARÇOM" @click="chamarGarcom(1)"/>
