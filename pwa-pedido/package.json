@@ -10,7 +10,9 @@
     "lint": "eslint --ext .js,.vue src",
     "test": "echo \"No test specified\" && exit 0",
     "start-pwa": "quasar dev -m pwa",
-    "start-db": "json-server --watch ./db.json --port 3000"
+    "start-db": "json-server --watch ./db.json --port 3000",
+    "start-build": "quasar build --mode pwa",
+    "test-prod": "quasar serve dist/pwa-mat"
   },
   "dependencies": {
     "axios": "^0.18.0",

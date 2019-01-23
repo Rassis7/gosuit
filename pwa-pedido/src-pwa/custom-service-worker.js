@@ -4,88 +4,81 @@
  * quasar.conf > pwa > workboxPluginMode is set to "InjectManifest"
  */
 
-if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('service-worker.js')
-}
-
-document.querySelector('#show').addEventListener('click', () => {
-  const iconUrl = document.querySelector('select').selectedOptions[0].value
-  let imgElement = document.createElement('img')
-  imgElement.src = iconUrl
-  document.querySelector('#container').appendChild(imgElement)
-})
-
-// Nomes dos dois caches usados nesta versão do service worker.
-// Altera para v2, etc. quando você atualizar algum dos recursos locais, o que
-// por sua vez aciona o evento de instalação novamente.
-const PRECACHE = 'gosuit-v1'
-const RUNTIME = 'runtime'
-
-// Uma lista de recursos locais que sempre queremos que sejam armazenados em cache.
-const PRECACHE_URLS = [
+var CACHE_NAME = 'go-suit-cache-v1'
+var urlsToCache = [
+  '/',
   'index.html',
-  './', // Alias for index.html
-  '.stylintrc',
-  'src/assets/*',
-  'src/static/*'
+  'img/*',
+  'statics/icon/*'
 ]
 
-// O evento de instalação que cuida do precaching dos recursos que sempre precisamos.
-self.addEventListener('install', event => {
+self.addEventListener('install', function (event) {
+  // Perform install steps
   event.waitUntil(
-    caches.open(PRECACHE)
-      .then(cache => cache.addAll(PRECACHE_URLS))
-      .then(self.skipWaiting())
-  )
-})
-
-// O evento de ativação que cuida da limpeza de caches antigos.
-self.addEventListener('activate', event => {
-  const currentCaches = [PRECACHE, RUNTIME]
-  event.waitUntil(
-    caches.keys().then(cacheNames => {
-      return cacheNames.filter(cacheName => !currentCaches.includes(cacheName))
-    }).then(cachesToDelete => {
-      return Promise.all(cachesToDelete.map(cacheToDelete => {
-        return caches.delete(cacheToDelete)
-      }))
-    }).then(() => self.clients.claim())
-  )
-})
-
-// O evento de busca de recursos exibe respostas para recursos de mesma origem de um cache.
-// Se nenhuma resposta for encontrada, ele preencherá o cache em tempo de execução com a resposta
-// da rede antes de retornar para a página.
-self.addEventListener('fetch', event => {
-  // Ignora solicitações de origem cruzada, como as do Google Analytics.
-  if (event.request.url.startsWith(self.location.origin)) {
-    event.respondWith(
-      caches.match(event.request).then(cachedResponse => {
-        if (cachedResponse) {
-          return cachedResponse
-        }
-        return caches.open(RUNTIME).then(cache => {
-          return fetch(event.request).then(response => {
-            // Coloque uma cópia da resposta no cache em tempo de execução.
-            return cache.put(event.request, response.clone()).then(() => {
-              return response
-            })
-          })
-        })
+    caches.open(CACHE_NAME)
+      .then(function (cache) {
+        console.log('Opened cache')
+        return cache.addAll(urlsToCache)
       })
-    )
-  }
+  )
 })
 
-// Verificar se está on ou off
-// Mostrar uma notificação para isso
+/*
+Se quisermos armazenar novas solicitações em cache de forma cumulativa, poderemos
+fazê-lo tratando a resposta da solicitação de recuperação e adicionando-a ao cache, como mostrado a seguir.
 
-// componentDidMount() {
-//   window.addEventListener('online', () => this.setOnlineStatus(true));
-//   window.addEventListener('offline', () => this.setOnlineStatus(false));
-// }
-// componentWillUnmount() {
-//   window.removeEventListener('online');
-//   window.removeEventListener('offline');
-// }
-// setOnlineStatus = isOnline => this.setState({ online: isOnline })
+1 Adicionar um retorno de chamada a .then() na solicitação fetch.
+
+2 Após obter uma resposta, executar as seguintes verificações:
+
+3 Verificar se a resposta é válida.
+
+4 Verificar se o status da resposta é 200.
+
+5 Verificar se o tipo de resposta é basic, o que indica que é uma solicitação de nossa origem. Isso significa
+  que solicitações de ativos de terceiros não são armazenadas no cache.
+
+6 Se todas as verificações forem bem-sucedidas, clonaremos a resposta. O motivo para isso é que, como a resposta
+  é um Stream, o corpo poderá ser consumido apenas uma vez. Como queremos retornar a resposta para uso pelo navegador,
+  bem como passá-la para uso pelo cache, precisamos cloná-la para podermos enviá-la ao navegador e ao cache.
+*/
+
+self.addEventListener('fetch', function (event) {
+  event.respondWith(
+    caches.match(event.request)
+      .then(function (response) {
+        // Cache hit - return response
+        if (response) {
+          return response
+        }
+
+        // IMPORTANT: Clone the request. A request is a stream and
+        // can only be consumed once. Since we are consuming this
+        // once by cache and once by the browser for fetch, we need
+        // to clone the response.
+        var fetchRequest = event.request.clone()
+
+        return fetch(fetchRequest).then(
+          function (response) {
+            // Check if we received a valid response
+            if (!response || response.status !== 200 || response.type !== 'basic') {
+              return response
+            }
+
+            // IMPORTANT: Clone the response. A response is a stream
+            // and because we want the browser to consume the response
+            // as well as the cache consuming the response, we need
+            // to clone it so we have two streams.
+            var responseToCache = response.clone()
+
+            caches.open(CACHE_NAME)
+              .then(function (cache) {
+                cache.put(event.request, responseToCache)
+              })
+
+            return response
+          }
+        )
+      })
+  )
+})

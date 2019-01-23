@@ -6,16 +6,16 @@
         <div class="row gutter-sm">
 
           <div class="col-12 text-center">
-            <img src="~assets/Logo-Gowaiter.png" style="width:100vw;max-width:300px;">
+            <img src="~assets/logo.png" style="width:100vw;max-width:300px;">
           </div>
 
           <div class="col-12 text-center">
             <login-facebook @atualizarUsuario="addUserItens"></login-facebook>
           </div>
 
-          <div class="col-12 text-center">
+          <!-- <div class="col-12 text-center">
             <login-google @atualizarUsuario="addUserItens"></login-google>
-          </div>
+          </div> -->
 
         </div>
       </q-page>
