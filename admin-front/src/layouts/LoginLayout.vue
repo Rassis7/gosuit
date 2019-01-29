@@ -16,4 +16,8 @@ export default {
 </script>
 
 <style>
+body {
+  background-image: url("../assets/login.png");
+  background-repeat: no-repeat, repeat;
+}
 </style>

@@ -1,53 +1,45 @@
 <template>
   <div>
-      <div class="row justify-center items-center content-center">
-        <div class="col-4 dark">
-            <q-field
-              icon="place"
-              :count="10"
-              helper="Some helper"
-            >
-              <q-input dark color="blue" v-model="text" />
-            </q-field>
+      <div class="row container-box">
+        <div class="col-4 dark-box">
+          <autenticacao-component v-show="loginVisible == true" @visibleLoginPai="loginVisible = false"/>
 
-            <q-field
-              icon="place"
-              :count="10"
-              helper="Some helper"
-            >
-              <q-input dark color="blue" v-model="text" />
-            </q-field>
-
+          <resgate-senha-component v-show="loginVisible == false" @visibleLoginPai="loginVisible = true"/>
         </div>
       </div>
   </div>
 </template>
 
 <script>
+import AutenticacaoComponent from '../components/Autenticacao'
+import ResgateSenhaComponent from '../components/ResgateSenha'
+
 export default {
   name: 'LoginPage',
+  components: {AutenticacaoComponent, ResgateSenhaComponent},
   data () {
     return {
-      text: '',
-      text2: '',
-      email: '',
-      select: 'bucharest',
-      group: 'pineapple',
-      group2: ['paris'],
-      group3: 'london',
-      chips: ['Jim'],
-      color: null,
-      date: null,
-      rating: 0,
-      error: true,
-      warning: false
+      loginVisible: true
     }
   }
 }
 </script>
 
 <style scoped>
-.dark {
-  background-color: #000 !important
+.dark-box {
+  background-color: #000 !important;
+  position:absolute;
+  padding: 15px 15px 15px;
+  min-width: 300px;
+  min-height: 400px;
 }
+.container-box {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
 </style>
