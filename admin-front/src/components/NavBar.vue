@@ -1,7 +1,6 @@
 <template>
   <div>
-    <q-toolbar class="toolbar"
-    >
+    <q-toolbar>
       <q-btn
         flat
         dense
@@ -35,9 +34,4 @@ export default {
 </script>
 
 <style lang="scss">
-@import '../css/vars.scss';
-
-.toolbar {
-  background-color: $primary !important;
-}
 </style>

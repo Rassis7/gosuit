@@ -1,6 +1,5 @@
 <template>
-  <div>
-
+  <div class="col-md-4 dark-box">
     <q-alert
       :type="colorAlert"
       :icon="iconAlert"
@@ -11,14 +10,14 @@
     </q-alert>
 
     <p class="q-display-1 text-weight-light text-white text-center titulo">
-      <strong>Alterar senha</strong>
+      <img src="../statics/icons/ms-icon-144x144.png" alt="logo">
     </p>
 
     <br>
 
     <q-field
       icon="mail"
-      helper="Insira seu email"
+      helper="Insira seu email e lhe enviarems um novo acesso"
     >
       <q-input dark color="pink-8" v-model="text" />
     </q-field>
@@ -29,8 +28,10 @@
     <div class="text-center">
       <q-btn
         :loading="loading"
-        color="pink-8"
+        outline
+        color="secondary"
         label="Confirmar alteração"
+        size="lg"
         @click="handler"
       >
         <q-spinner-oval slot="loading" />
@@ -40,7 +41,7 @@
     <br>
 
     <p class="q-title text-center titulo">
-      <a href="javascript:void(0)" class="text-weight-light text-white" @click="visibleLogin">Voltar para login</a>
+      <a href="javascript:void(0)" class="text-weight-light text-white" @click="visibleLogin">Voltar para o login</a>
     </p>
 
   </div>

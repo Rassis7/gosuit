@@ -1,3 +1,5 @@
+@import '../css/vars.scss';
+
 /*CSS*/
 .titulo {
   margin-top: 40px;
@@ -5,4 +7,12 @@
   a {
     text-decoration:none
   }
+}
+
+.dark-box {
+  background-color: $black !important;
+  position: absolute;
+  padding: 15px 15px 15px;
+  min-width: 300px;
+  min-height: 300px;
 }

@@ -1,7 +1,7 @@
 <template>
-  <div>
+  <div class="col-md-4 dark-box">
     <p class="q-display-1 text-weight-light text-white text-center titulo">
-      <strong>Faça seu login</strong>
+      <img src="../statics/icons/ms-icon-144x144.png" alt="logo">
     </p>
 
     <q-field
@@ -25,8 +25,10 @@
     <div class="text-center">
       <q-btn
         :loading="loading"
-        color="pink-9"
+        outline
+        color="secondary"
         label="Acessar"
+        size="lg"
         @click="handler"
       >
         <q-spinner-oval slot="loading" />
@@ -35,7 +37,7 @@
 
     <br>
 
-    <p class="q-body-1 text-center titulo">
+    <p class="q-title text-center titulo">
       <a href="javascript:void(0)" class="text-weight-light text-white" @click="visibleLogin">Esqueci minha senha</a>
     </p>
   </div>

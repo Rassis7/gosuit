@@ -1,11 +1,8 @@
 <template>
   <div>
       <div class="row container-box">
-        <div class="col-4 dark-box">
-          <autenticacao-component v-show="loginVisible == true" @visibleLoginPai="loginVisible = false"/>
-
-          <resgate-senha-component v-show="loginVisible == false" @visibleLoginPai="loginVisible = true"/>
-        </div>
+        <autenticacao-component v-show="loginVisible == true" @visibleLoginPai="loginVisible = false"/>
+        <resgate-senha-component v-show="loginVisible == false" @visibleLoginPai="loginVisible = true"/>
       </div>
   </div>
 </template>
@@ -28,13 +25,6 @@ export default {
 <style lang="scss">
 @import '../css/vars.scss';
 
-.dark-box {
-  background-color: $black !important;
-  position:absolute;
-  padding: 15px 15px 15px;
-  min-width: 300px;
-  min-height: 400px;
-}
 .container-box {
     width: 100vw;
     height: 100vh;

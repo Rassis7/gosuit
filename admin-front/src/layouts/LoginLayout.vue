@@ -15,9 +15,19 @@ export default {
 }
 </script>
 
-<style>
-.layout-login {
-  background-image: url("../assets/login.png");
-  background-repeat: no-repeat, repeat;
+<style lang="scss">
+@import '../css/vars.scss';
+
+@media (min-width: 577px) {
+  .layout-login {
+    background-image: url("../assets/login.png");
+    background-repeat: no-repeat, repeat;
+  }
+}
+
+@media (max-width: 576px) {
+  .layout-login {
+    background-color: $black;
+  }
 }
 </style>
