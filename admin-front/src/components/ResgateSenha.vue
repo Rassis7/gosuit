@@ -73,12 +73,6 @@ export default {
 }
 </script>
 
-<style scoped>
-.titulo {
-  margin-top: 40px;
-  margin-bottom: 40px;
-}
-.titulo a {
-  text-decoration:none
-}
+<style lang="scss">
+@import '../css/login.scss';
 </style>

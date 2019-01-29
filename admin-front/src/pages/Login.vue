@@ -25,9 +25,11 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="scss">
+@import '../css/vars.scss';
+
 .dark-box {
-  background-color: #000 !important;
+  background-color: $black !important;
   position:absolute;
   padding: 15px 15px 15px;
   min-width: 300px;

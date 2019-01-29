@@ -5,7 +5,10 @@
         link
         inset-delimiter
       >
-        <q-list-header>Essential Links</q-list-header>
+        <q-list-header>
+          <img src="../assets/quasar-logo-full.svg" alt="logo">
+        </q-list-header>
+
         <q-item @click.native="openURL('http://quasar-framework.org')">
           <q-item-side icon="school" />
           <q-item-main label="Docs" sublabel="quasar-framework.org" />
@@ -42,5 +45,4 @@ export default {
 </script>
 
 <style scoped>
-
 </style>

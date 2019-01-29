@@ -1,5 +1,5 @@
 <template>
-  <q-layout view="lHh Lpr lFf">
+  <q-layout view="lHh Lpr lFf" class="layout-login">
     <q-page-container>
       <router-view />
     </q-page-container>
@@ -16,7 +16,7 @@ export default {
 </script>
 
 <style>
-body {
+.layout-login {
   background-image: url("../assets/login.png");
   background-repeat: no-repeat, repeat;
 }

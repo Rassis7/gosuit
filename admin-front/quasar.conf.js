@@ -58,6 +58,7 @@ module.exports = function (ctx) {
         'QInput',
         'QField',
         'QAlert',
+        'AddressbarColor',
         'QSpinner',
         'QSpinnerOval'
       ],

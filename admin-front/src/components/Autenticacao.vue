@@ -25,7 +25,7 @@
     <div class="text-center">
       <q-btn
         :loading="loading"
-        color="pink-8"
+        color="pink-9"
         label="Acessar"
         @click="handler"
       >
@@ -64,12 +64,6 @@ export default {
 }
 </script>
 
-<style scoped>
-.titulo {
-  margin-top: 40px;
-  margin-bottom: 40px;
-}
-.titulo a {
-  text-decoration:none
-}
+<style lang="scss">
+@import '../css/login.scss';
 </style>

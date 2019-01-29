@@ -1,10 +1,7 @@
 <template>
   <div>
-    <q-toolbar
-        color="primary"
-        :glossy="$q.theme === 'mat'"
-        :inverted="$q.theme === 'ios'"
-      >
+    <q-toolbar class="toolbar"
+    >
       <q-btn
         flat
         dense
@@ -37,6 +34,10 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="scss">
+@import '../css/vars.scss';
 
+.toolbar {
+  background-color: $primary !important;
+}
 </style>
