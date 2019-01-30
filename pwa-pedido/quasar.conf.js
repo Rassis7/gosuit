@@ -69,6 +69,7 @@ module.exports = function (ctx) {
         'QCardSeparator',
         'QCardActions',
         'QModal',
+        'QModalLayout',
         'QInput',
         'QToolbar',
         'QToolbarTitle',
@@ -80,6 +81,7 @@ module.exports = function (ctx) {
         'QSpinner',
         'QSpinnerDots',
         'QToggle',
+        'QRating',
         'QTimelineEntry'
       ],
       directives: [
@@ -103,11 +105,11 @@ module.exports = function (ctx) {
       pwa: false
     },
     pwa: {
-      // workboxPluginMode: 'InjectManifest',
+      workboxPluginMode: 'InjectManifest',
       // workboxOptions: {},
       manifest: {
-        name: 'GoWaiter',
-        short_name: 'gowaiter',
+        name: 'GoSuit',
+        short_name: 'gosuit',
         description: 'Gerenciador de pedidos para bares e restaurantes',
         display: 'standalone',
         start_url: '/?utm_source=homescreen',

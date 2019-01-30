@@ -6,10 +6,16 @@
     @hide="onHide"
     :actions="[
       {
-        label: 'Trocar de mesa',
-        icon: 'cached',
+        label: 'Infomações sobre o local',
+        icon: 'info',
         color: 'blue',
-        handler: trocarMesa
+        handler: infosLocal
+      },
+      {
+        label: 'Avaliar',
+        icon: 'star',
+        color: 'warning',
+        handler: avaliacaoModal
       },
       {},
       {
@@ -19,22 +25,26 @@
         handler: logout
       },
     ]"/>
+
+    <avaliacao-component :opened="openedAvaliacaoPai" @resetarPropModalAvaliacao="openedAvaliacaoPai = false"/>
   </div>
 </template>
 
 <script>
+import avaliacaoComponent from './Avaliacao'
 
 export default {
+  name: 'acoesModalComponent',
+  components: {avaliacaoComponent},
+  data () {
+    return {
+      openedAvaliacaoPai: false
+    }
+  },
   props: {
     toggleActionModal: {
       type: Boolean,
       default: false
-    }
-  },
-  name: 'AcoesModalComponent',
-  data () {
-    return {
-      openLeituraQrCode: false
     }
   },
   computed: {
@@ -54,8 +64,11 @@ export default {
     logout () {
       this.$router.push('/')
     },
-    trocarMesa () {
-      this.openLeituraQrCode = true
+    infosLocal () {
+      //
+    },
+    avaliacaoModal () {
+      this.openedAvaliacaoPai = true
     }
   }
 }

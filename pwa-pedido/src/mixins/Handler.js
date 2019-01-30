@@ -8,12 +8,12 @@ export default {
         case 200:
           msgAux = 'Ação realizada com sucesso'
           icon = 'check_circle_outline'
-          type = 'secondary'
+          type = 'black'
           break
         case 201:
           msgAux = 'Item criado com sucesso'
           icon = 'check_circle_outline'
-          type = 'secondary'
+          type = 'black'
           break
         case 204:
           break
@@ -22,14 +22,19 @@ export default {
           icon = 'error_outline'
           type = 'negative'
           break
-        case 401:
+        case 401 || 403:
           msgAux = 'Não autorizado'
-          type = 'negative'
           icon = 'lock'
+          type = 'warning'
           break
         case 500:
           msgAux = 'Erro interno do servidor'
           icon = 'mood_bad'
+          type = 'negative'
+          break
+        case 599:
+          msgAux = 'Sem conexão com a internet'
+          icon = 'wifi_off'
           type = 'negative'
           break
         default:

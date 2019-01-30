@@ -8,10 +8,6 @@
       <q-btn flat round dense icon="more_vert" @click="opened = true"/>
 
     </q-toolbar>
-    <q-tabs class="shadow-5" :animated="true" :swipeable="true" underline-color="yellow-12" align="justify">
-      <q-route-tab default slot="title" icon="restaurant_menu" to="/cardapio" label="CARDÁPIO"/>
-      <q-route-tab slot="title" icon="list_alt" to="/comanda" label="COMANDA"/>
-    </q-tabs>
 
     <acoes-modal-component :toggle-action-modal="opened" @resetarPropAcoesModalFechar="opened = false"/>
 

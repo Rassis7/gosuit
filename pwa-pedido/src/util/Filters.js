@@ -21,4 +21,11 @@ export default Vue => {
     if (!value || Object.keys(value).length === 0) return ''
     return moment(value).locale('pt-br').format('llll')
   })
+
+  Vue.filter('limitarCaracteres', (value, param) => {
+    if (value.length >= param) {
+      return `${value.substr(0, 20)}...`
+    }
+    return value
+  })
 }
