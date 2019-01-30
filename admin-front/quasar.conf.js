@@ -60,7 +60,12 @@ module.exports = function (ctx) {
         'QAlert',
         'AddressbarColor',
         'QSpinner',
-        'QSpinnerOval'
+        'QSpinnerOval',
+        'QTable',
+        'QTh',
+        'QTr',
+        'QTd',
+        'QTableColumns'
       ],
       directives: [
         'Ripple'

@@ -12,18 +12,24 @@
       </q-btn>
 
       <q-toolbar-title>
-          Quasar App
-          <div slot="subtitle">Running on Quasar v{{ $q.version }}</div>
+          {{getDescricaoNavBar.title}}
+          <div v-if="getDescricaoNavBar.subTitle" slot="subtitle">{{getDescricaoNavBar.subTitle}}</div>
         </q-toolbar-title>
     </q-toolbar>
   </div>
 </template>
 
 <script>
+import {mapGetters} from 'vuex'
+
 export default {
   name: 'NavBarComponent',
+  props: ['descricao'],
   data () {
     return {}
+  },
+  computed: {
+    ...mapGetters(['getDescricaoNavBar'])
   },
   methods: {
     toggle () {

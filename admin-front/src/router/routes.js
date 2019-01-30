@@ -11,7 +11,8 @@ const routes = [
     path: '/home',
     component: () => import('layouts/AdminLayout.vue'),
     children: [
-      { path: '', component: () => import('pages/Index.vue') }
+      { path: '/', component: () => import('pages/Index.vue') },
+      { path: '/mesa', component: () => import('pages/Mesa.vue') }
     ]
   }
 ]

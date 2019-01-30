@@ -26,8 +26,7 @@ export default {
   components: {MenuDrawer, NavBar},
   data () {
     return {
-      leftDrawerOpenPai: this.$q.platform.is.desktop,
-      bla: null
+      leftDrawerOpenPai: this.$q.platform.is.desktop
     }
   }
 }
