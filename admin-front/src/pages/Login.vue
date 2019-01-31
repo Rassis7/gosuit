@@ -8,8 +8,8 @@
 </template>
 
 <script>
-import AutenticacaoComponent from '../components/Autenticacao'
-import ResgateSenhaComponent from '../components/ResgateSenha'
+import AutenticacaoComponent from '../components/Login/Autenticacao'
+import ResgateSenhaComponent from '../components/Login/ResgateSenha'
 
 export default {
   name: 'LoginPage',

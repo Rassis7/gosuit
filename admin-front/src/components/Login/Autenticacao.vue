@@ -1,7 +1,7 @@
 <template>
   <div class="col-md-4 dark-box">
     <p class="q-display-1 text-weight-light text-white text-center titulo">
-      <img src="../statics/icons/ms-icon-144x144.png" alt="logo">
+      <img src="../../statics/icons/ms-icon-144x144.png" alt="logo">
     </p>
 
     <q-field
@@ -67,5 +67,5 @@ export default {
 </script>
 
 <style lang="scss">
-@import '../css/login.scss';
+@import '../../css/login.scss';
 </style>

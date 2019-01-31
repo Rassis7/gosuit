@@ -13,10 +13,8 @@ export default {
       loading: false,
       serverPagination: {
         page: 1,
-        rowsNumber: 10 // specifying this determines pagination is server-side
-      },
-
-      serverData: []
+        rowsNumber: 20 // specifying this determines pagination is server-side
+      }
     }
   },
   methods: {
