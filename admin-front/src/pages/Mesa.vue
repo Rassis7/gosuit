@@ -18,6 +18,7 @@
     </q-page-sticky>
 
     <modal-cadastro-component :opened="openedModalCadastroPai" @fecharModalPai="openedModalCadastroPai = false"/>
+    <modal-cadastro-lote-component :opened="openedModalCadastroMassaPai" @fecharModalPai="openedModalCadastroMassaPai = false"/>
 
   </div>
 </template>
@@ -27,13 +28,15 @@ import {mapMutations} from 'vuex'
 import FloatButtonComponent from '../components/Mesa/FloatButton'
 import DataTableComponent from '../components/Mesa/DataTable'
 import ModalCadastroComponent from '../components/Mesa/ModalCadastro'
+import ModalCadastroLoteComponent from '../components/Mesa/ModalCadastroLote'
 
 export default {
   name: 'MesaPage',
   components: {
     FloatButtonComponent,
     DataTableComponent,
-    ModalCadastroComponent
+    ModalCadastroComponent,
+    ModalCadastroLoteComponent
   },
   data () {
     return {

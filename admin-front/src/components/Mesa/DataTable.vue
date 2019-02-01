@@ -5,6 +5,7 @@
       :data="serverData"
       :columns="columns"
       row-key="ms"
+      :loading="loading"
   />
   </div>
 </template>
@@ -40,6 +41,14 @@ export default {
           align: 'left',
           field: 'lugares',
           sortable: true
+        },
+        {
+          name: 'at',
+          required: true,
+          label: 'Ativo',
+          align: 'left',
+          field: 'ativo',
+          sortable: true
         }
       ],
       serverData: []
@@ -57,7 +66,8 @@ export default {
           numero: '#A12',
           praca: 3,
           fat: 6.0,
-          lugares: 4
+          lugares: 4,
+          ativo: 'SIM'
         }],
         rowsNumber: 1
       }
