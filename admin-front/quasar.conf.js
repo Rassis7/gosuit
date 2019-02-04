@@ -69,6 +69,7 @@ module.exports = function (ctx) {
         'QTableColumns',
         'QTooltip',
         'QModal',
+        'QCollapsible',
         'QModalLayout',
         'QFab',
         'QFabAction'

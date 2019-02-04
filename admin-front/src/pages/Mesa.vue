@@ -1,7 +1,13 @@
 <template>
   <div>
+
     <q-page padding>
-      <div class="row gutter-sm">
+      <div class="row gutter-md">
+        <!-- FILTROS -->
+        <div class="col-10 offset-1">
+          <filtros-component/>
+        </div>
+
         <!-- DATATABLE -->
         <div class="col-10 offset-1">
           <data-table-component/>
@@ -29,6 +35,7 @@ import FloatButtonComponent from '../components/Mesa/FloatButton'
 import DataTableComponent from '../components/Mesa/DataTable'
 import ModalCadastroComponent from '../components/Mesa/ModalCadastro'
 import ModalCadastroLoteComponent from '../components/Mesa/ModalCadastroLote'
+import FiltrosComponent from '../components/Mesa/Filtros'
 
 export default {
   name: 'MesaPage',
@@ -36,7 +43,8 @@ export default {
     FloatButtonComponent,
     DataTableComponent,
     ModalCadastroComponent,
-    ModalCadastroLoteComponent
+    ModalCadastroLoteComponent,
+    FiltrosComponent
   },
   data () {
     return {

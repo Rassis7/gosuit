@@ -16,7 +16,7 @@
             </div>
 
             <div class="col-4">
-              <q-input v-model="Identificacao" float-label="Nome/Número da mesa"/>
+              <q-input v-model="identificacao" float-label="Nome/Número da mesa"/>
             </div>
 
             <div class="col-4">
@@ -43,7 +43,11 @@ export default {
   name: 'ModalCadastroMesaComponenet',
   extends: BaseModal,
   data () {
-    return {}
+    return {
+      praca: null,
+      identificacao: null,
+      qtdCadeiras: null
+    }
   },
   methods: {
     resetarModal () {

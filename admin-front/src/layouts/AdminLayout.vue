@@ -1,5 +1,5 @@
 <template>
-  <q-layout view="lHh Lpr lFf">
+  <q-layout view="lHh Lpr lFf" class="layout-admin">
     <q-layout-header>
       <nav-bar @toogleMenuPai="leftDrawerOpenPai = !leftDrawerOpenPai"/>
     </q-layout-header>
@@ -33,5 +33,6 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss">
+@import '../css/vars.scss';
 </style>
