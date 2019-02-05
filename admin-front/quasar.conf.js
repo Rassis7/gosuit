@@ -73,14 +73,16 @@ module.exports = function (ctx) {
         'QModalLayout',
         'QCheckbox',
         'QFab',
-        'QFabAction'
+        'QFabAction',
+        'QSelect'
       ],
       directives: [
         'Ripple'
       ],
       // Quasar plugins
       plugins: [
-        'Notify'
+        'Notify',
+        'Dialog'
       ]
       // iconSet: ctx.theme.mat ? 'material-icons' : 'ionicons'
       // i18n: 'de' // Quasar language

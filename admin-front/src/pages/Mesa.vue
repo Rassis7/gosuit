@@ -4,14 +4,9 @@
     <q-page padding>
       <div class="row gutter-md">
         <!-- FILTROS -->
-        <div class="col-10 offset-1">
-          <filtros-component/>
-        </div>
-
+        <filtros-component/>
         <!-- DATATABLE -->
-        <div class="col-10 offset-1">
-          <data-table-component @openModalEdicaoPai="openModalEdicao"/>
-        </div>
+        <data-table-component @openModalEdicaoPai="openModalEdicao"/>
       </div>
     </q-page>
 
