@@ -1,6 +1,6 @@
 <template>
   <div>
-    <q-modal v-model="opendComputed" :content-css="{minWidth: '50vw', minHeight: '30vh'}">
+    <q-modal v-model="opendComputed" :content-css="{minWidth: '50vw', minHeight: '30vh'}" @hide="resetarModal">
       <q-modal-layout>
         <q-toolbar slot="header">
           <q-toolbar-title>
@@ -11,15 +11,11 @@
         <div class="modal-body">
 
           <div class="form row gutter-md">
-            <div class="col-4">
+            <div class="col-6">
               <q-input v-model="praca" float-label="Qual a praça da mesa?"/>
             </div>
 
-            <div class="col-4">
-              <q-input v-model="Identificacao" float-label="Nome/Número da mesa"/>
-            </div>
-
-            <div class="col-4">
+            <div class="col-6">
               <q-input v-model="quantidadeCriadas" float-label="Deseja criar quantas mesas em lote?" type="number"/>
             </div>
           </div>
@@ -42,6 +38,12 @@ import BaseModal from '../BaseModal.vue'
 export default {
   name: 'ModalCadastroLoteComponent',
   extends: BaseModal,
+  data () {
+    return {
+      praca: null,
+      quantidadeCriadas: null
+    }
+  },
   methods: {
     resetarModal () {
       this.$emit('fecharModalPai')

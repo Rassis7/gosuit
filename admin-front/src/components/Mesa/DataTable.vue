@@ -5,8 +5,27 @@
       :data="serverData"
       :columns="columns"
       row-key="ms"
-      :loading="loading"
-  />
+      :loading="loading">
+
+      <q-tr slot="body" slot-scope="props" :props="props">
+        <q-td key="numero" class="text-center">{{props.row.numero}}</q-td>
+        <q-td key="praca" class="text-center">{{ props.row.praca }}</q-td>
+        <q-td key="lugares" class="text-center">{{ props.row.lugares }}</q-td>
+        <q-td key="ativo" class="text-center">{{ props.row.ativo }}</q-td>
+        <q-td key="acoes" class="text-center">
+          <q-btn size="sm" round dense color="red" icon="remove" class="q-mr-xs">
+            <q-tooltip>Remover</q-tooltip>
+          </q-btn>
+          <q-btn size="sm" round dense color="warning" icon="edit" class="q-mr-xs" @click="editarMesa(props)">
+            <q-tooltip>Editar</q-tooltip>
+          </q-btn>
+          <q-btn size="sm" round dense color="purple" icon="developer_mode" class="q-mr-xs">
+            <q-tooltip>Gerar código da mesa</q-tooltip>
+          </q-btn>
+        </q-td>
+      </q-tr>
+
+    </q-table>
   </div>
 </template>
 
@@ -49,6 +68,14 @@ export default {
           align: 'left',
           field: 'ativo',
           sortable: true
+        },
+        {
+          name: 'ac',
+          required: false,
+          label: 'Ações',
+          align: 'left',
+          field: 'acoes',
+          sortable: false
         }
       ],
       serverData: []
@@ -63,9 +90,9 @@ export default {
       // no then chama: self.updateRowsTable (data, pagination)
       var data = {
         rows: [{
+          id: 1,
           numero: '#A12',
           praca: 3,
-          fat: 6.0,
           lugares: 4,
           ativo: 'SIM'
         }],
@@ -75,7 +102,10 @@ export default {
       setTimeout(function () {
         self.updateRowsTable(data, pagination)
         self.loading = false
-      }, 3000)
+      }, 1000)
+    },
+    editarMesa (props) {
+      this.$emit('openModalEdicaoPai', props.row)
     }
   }
 }

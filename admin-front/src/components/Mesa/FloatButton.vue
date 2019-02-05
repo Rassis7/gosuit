@@ -14,6 +14,12 @@
         </q-tooltip>
       </q-fab-action>
 
+      <q-fab-action color="secondary" class="white" icon="developer_mode">
+        <q-tooltip anchor="center left" self="center right" :offset="[10, 10]">
+          Gerar código de acesso para todas as mesas
+        </q-tooltip>
+      </q-fab-action>
+
       </q-fab>
   </div>
 </template>

@@ -10,7 +10,7 @@
 
         <!-- DATATABLE -->
         <div class="col-10 offset-1">
-          <data-table-component/>
+          <data-table-component @openModalEdicaoPai="openModalEdicao"/>
         </div>
       </div>
     </q-page>
@@ -18,13 +18,21 @@
     <!--Float button-->
     <q-page-sticky position="bottom-right" :offset="[18, 18]">
       <float-button-component
-        @openModalCadastroPai="openedModalCadastroPai = !openedModalCadastroPai"
+        @openModalCadastroPai="openedModalCadastroPai = !openedModalCadastroPai, paramsModalCadastro = null"
         @openModalCadastroMassaPai="openedModalCadastroMassaPai = !openedModalCadastroMassaPai"
       />
     </q-page-sticky>
 
-    <modal-cadastro-component :opened="openedModalCadastroPai" @fecharModalPai="openedModalCadastroPai = false"/>
-    <modal-cadastro-lote-component :opened="openedModalCadastroMassaPai" @fecharModalPai="openedModalCadastroMassaPai = false"/>
+    <modal-cadastro-component
+      :params="paramsModalCadastro"
+      :opened="openedModalCadastroPai"
+      @fecharModalPai="openedModalCadastroPai = false"
+    />
+
+    <modal-cadastro-lote-component
+      :opened="openedModalCadastroMassaPai"
+      @fecharModalPai="openedModalCadastroMassaPai = false"
+    />
 
   </div>
 </template>
@@ -49,11 +57,16 @@ export default {
   data () {
     return {
       openedModalCadastroPai: false,
-      openedModalCadastroMassaPai: false
+      openedModalCadastroMassaPai: false,
+      paramsModalCadastro: null
     }
   },
   methods: {
-    ...mapMutations(['UPDATE_TITLE_NAVBAR'])
+    ...mapMutations(['UPDATE_TITLE_NAVBAR']),
+    openModalEdicao (params) {
+      this.paramsModalCadastro = params
+      this.openedModalCadastroPai = true
+    }
   },
   created: function () {
     this.UPDATE_TITLE_NAVBAR({title: 'Mesa', subTitle: 'Gerencie as mesas do seu estabelecimento'})

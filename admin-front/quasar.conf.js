@@ -71,6 +71,7 @@ module.exports = function (ctx) {
         'QModal',
         'QCollapsible',
         'QModalLayout',
+        'QCheckbox',
         'QFab',
         'QFabAction'
       ],

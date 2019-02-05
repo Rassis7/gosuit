@@ -1,6 +1,6 @@
 <template>
   <div>
-    <q-modal v-model="opendComputed" :content-css="{minWidth: '50vw', minHeight: '30vh'}">
+    <q-modal v-model="opendComputed" :content-css="{minWidth: '50vw', minHeight: '30vh'}" @hide="resetarModal">
       <q-modal-layout>
         <q-toolbar slot="header">
           <q-toolbar-title>
@@ -12,15 +12,15 @@
 
           <div class="form row gutter-md">
             <div class="col-4">
-              <q-input v-model="praca" float-label="Qual a praça da mesa?"/>
+              <q-input v-model="paramsComputed.praca" float-label="Qual a praça da mesa?"/>
             </div>
 
             <div class="col-4">
-              <q-input v-model="identificacao" float-label="Nome/Número da mesa"/>
+              <q-input v-model="paramsComputed.numero" float-label="Nome/Número da mesa"/>
             </div>
 
             <div class="col-4">
-              <q-input v-model="qtdCadeiras" float-label="Qual a quantidade de cadeiras?"/>
+              <q-input v-model="paramsComputed.lugares" float-label="Qual a quantidade de cadeiras?"/>
             </div>
           </div>
 
@@ -44,9 +44,30 @@ export default {
   extends: BaseModal,
   data () {
     return {
-      praca: null,
-      identificacao: null,
-      qtdCadeiras: null
+      acao: 'Cadastro',
+      stateParams: {
+        id: null,
+        praca: null,
+        numero: null,
+        lugares: null
+      }
+    }
+  },
+  props: {
+    params: {
+      type: Object,
+      default: null
+    }
+  },
+  computed: {
+    paramsComputed: {
+      get: function () {
+        if (this.params === null) return this.stateParams
+        return this.params
+      },
+      set: function (params) {
+        return this.params
+      }
     }
   },
   methods: {
