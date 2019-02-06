@@ -16,8 +16,10 @@
         </div>
 
         <q-toolbar slot="footer" color="white">
-            <q-btn color="faded" label="Fechar" class="float-right on-right" @click="fecharModal"/>
-            <q-btn color="primary" label="Salvar" class="float-right"/>
+            <div class="col-12 text-right">
+              <q-btn color="faded" label="Fechar" class="q-mr-sm" @click="fecharModal"/>
+              <q-btn color="primary" label="Salvar" class="q-mr-sm"/>
+            </div>
         </q-toolbar>
 
       </q-modal-layout>
