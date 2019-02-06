@@ -132,8 +132,6 @@ export default {
         // faz o axios removendo a parada
         this.request({ pagination: this.serverPagination, filter: this.filter })
         self.$q.notify({message: 'Item inativado com sucesso', color: 'dark', icon: 'check_circle_outline', position: 'top-right'})
-      }).catch((e) => {
-        self.$q.notify('Disagreed...')
       })
     }
   }

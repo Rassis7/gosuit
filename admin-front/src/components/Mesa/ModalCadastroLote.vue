@@ -1,6 +1,6 @@
 <template>
   <div>
-    <q-modal v-model="opendComputed" :content-css="{minWidth: '50vw', minHeight: '30vh'}" @hide="resetarModal">
+    <q-modal v-model="opendComputed" :content-css="{minWidth: '50vw', minHeight: '30vh'}" @hide="fecharModal">
       <q-modal-layout>
         <q-toolbar slot="header">
           <q-toolbar-title>
@@ -23,7 +23,7 @@
         </div>
 
         <q-toolbar slot="footer" color="white">
-            <q-btn color="faded" label="Fechar" class="float-right on-right" @click="resetarModal"/>
+            <q-btn color="faded" label="Fechar" class="float-right on-right" @click="fecharModal"/>
             <q-btn color="primary" label="Salvar" class="float-right"/>
         </q-toolbar>
 
@@ -45,7 +45,7 @@ export default {
     }
   },
   methods: {
-    resetarModal () {
+    fecharModal () {
       this.$emit('fecharModalPai')
     }
   }
