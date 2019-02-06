@@ -14,8 +14,8 @@
           <q-item-main label="Mesas" sublabel="Cadastro, edição e listagem" />
         </q-item>
 
-        <q-item>
-          <q-item-side icon="fastfood" />
+        <q-item @click.native="$router.push('/produto')">
+          <q-item-side icon="fastfood"/>
           <q-item-main label="Produtos" sublabel="Cadastro, edição, listagem de produtos e cadastro de categorias" />
         </q-item>
       </q-list>
