@@ -9,7 +9,7 @@
           </div>
 
           <div class="col-xs-12 col-sm-4">
-            <q-input v-model="valor" float-label="Valor do produto"/>
+            <q-input v-model.lazy="valor" v-money="money" float-label="Valor do produto"/>
           </div>
 
           <div class="col-4">
@@ -28,12 +28,15 @@
 </template>
 
 <script>
+import { maskMoney } from '../../util/constants'
+
 export default {
   name: 'FiltroProdutoComponent',
   data () {
     return {
-      ativo: true,
+      money: maskMoney,
       valor: null,
+      ativo: true,
       praca: null,
       selectOptions: [
         {

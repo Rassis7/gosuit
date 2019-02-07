@@ -17,7 +17,7 @@
             </div>
 
             <div class="col-xs-12 col-sm-6">
-              <q-input v-maskReal="valor" float-label="Valor do produto"/>
+              <q-input v-model="valor" v-money="money" float-label="Valor do produto"/>
             </div>
 
             <div class="col-12">
@@ -48,6 +48,7 @@
 
 <script>
 import BaseModal from '../BaseModal'
+import { maskMoney } from '../../util/constants'
 
 export default {
   name: 'ModalCadastroComponent',
@@ -56,6 +57,7 @@ export default {
     return {
       nome: null,
       valor: null,
+      money: maskMoney,
       descricao: null
     }
   },

@@ -11,7 +11,9 @@
     "test": "echo \"No test specified\" && exit 0"
   },
   "dependencies": {
-    "axios": "^0.18.0"
+    "axios": "^0.18.0",
+    "v-money": "^0.8.1",
+    "vue-the-mask": "^0.11.1"
   },
   "devDependencies": {
     "babel-eslint": "^8.2.1",
