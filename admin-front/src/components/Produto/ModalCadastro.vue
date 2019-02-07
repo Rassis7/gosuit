@@ -11,6 +11,25 @@
         <div class="modal-body">
 
           <div class="form row gutter-md">
+
+            <div class="col-xs-12 col-sm-6">
+              <q-input v-model="nome" float-label="Qual o nome do produto?" :max-height="80"/>
+            </div>
+
+            <div class="col-xs-12 col-sm-6">
+              <q-input v-maskReal="valor" float-label="Valor do produto"/>
+            </div>
+
+            <div class="col-12">
+              <q-input
+                v-model="descricao"
+                type="textarea"
+                float-label="Qual a descrição do produto?"
+                :max-height="255"
+                rows="2"
+              />
+            </div>
+
           </div>
 
         </div>
@@ -34,7 +53,11 @@ export default {
   name: 'ModalCadastroComponent',
   extends: BaseModal,
   data () {
-    return {}
+    return {
+      nome: null,
+      valor: null,
+      descricao: null
+    }
   },
   props: {
     opened: {

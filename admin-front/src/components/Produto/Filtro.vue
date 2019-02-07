@@ -33,6 +33,8 @@ export default {
   data () {
     return {
       ativo: true,
+      valor: null,
+      praca: null,
       selectOptions: [
         {
           label: 'SIM',

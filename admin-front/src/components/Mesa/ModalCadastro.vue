@@ -12,7 +12,7 @@
 
           <div class="form row gutter-md">
             <div class="col-4">
-              <q-input v-model="paramsComputed.praca" float-label="Qual a praça da mesa?"/>
+              <q-input v-model="paramsComputed.praca" :max-height="45" float-label="Qual a praça da mesa?"/>
             </div>
 
             <div class="col-4">
