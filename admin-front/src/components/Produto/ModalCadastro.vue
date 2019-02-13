@@ -13,16 +13,16 @@
           <div class="form row gutter-md">
 
             <div class="col-xs-12 col-sm-6">
-              <q-input v-model="nome" float-label="Qual o nome do produto?" :max-height="80"/>
+              <q-input v-model="paramsComputed.nome" float-label="Qual o nome do produto?" :max-height="80"/>
             </div>
 
             <div class="col-xs-12 col-sm-6">
-              <q-input v-model="valor" v-money="money" float-label="Valor do produto"/>
+              <q-input v-model="paramsComputed.valor" v-money="money" float-label="Valor do produto"/>
             </div>
 
             <div class="col-12">
               <q-input
-                v-model="descricao"
+                v-model="paramsComputed.descricao"
                 type="textarea"
                 float-label="Qual a descrição do produto?"
                 :max-height="255"
@@ -55,16 +55,22 @@ export default {
   extends: BaseModal,
   data () {
     return {
-      nome: null,
-      valor: null,
       money: maskMoney,
-      descricao: null
+      stateParams: {
+        nome: null,
+        valor: null,
+        descricao: null
+      }
     }
   },
   props: {
     opened: {
       type: Boolean,
       default: false
+    },
+    params: {
+      type: Object,
+      default: null
     }
   },
   computed: {
@@ -75,6 +81,10 @@ export default {
       set: function (opend) {
         return this.opend
       }
+    },
+    paramsComputed: () => {
+      if (this.params === null) return this.stateParams
+      return this.params
     }
   },
   methods: {
