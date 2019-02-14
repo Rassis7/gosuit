@@ -6,7 +6,7 @@
         <filtro />
 
         <!-- DATATABLE -->
-        <data-table @openModalEdicaoPai="toogleModal"/>
+        <data-table @openModalEdicaoPai="openedModalPai = true"/>
       </div>
     </q-page>
 
@@ -17,9 +17,8 @@
 
     <modal-cadastro
       :opened="openedModalPai"
-      @fecharModalPai="toogleModal"
-      :params="paramsModalCadastro"
-      />
+      @fecharModalPai="openedModalPai = false"
+    />
 
   </div>
 </template>
@@ -36,16 +35,11 @@ export default {
   components: {FloatButton, ModalCadastro, Filtro, DataTable},
   data () {
     return {
-      openedModalPai: false,
-      paramsModalCadastro: null
+      openedModalPai: false
     }
   },
   methods: {
-    ...mapMutations(['UPDATE_TITLE_NAVBAR']),
-    toogleModal (params) {
-      this.paramsModalCadastro = (params === null || params === undefined) ? null : params
-      this.openedModalPai = !(params === null || params === undefined)
-    }
+    ...mapMutations(['UPDATE_TITLE_NAVBAR'])
   },
   created: function () {
     this.UPDATE_TITLE_NAVBAR({title: 'Produto', subTitle: 'Gerencie os produtos do seu estabelecimento'})

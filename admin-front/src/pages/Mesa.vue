@@ -6,7 +6,7 @@
         <!-- FILTROS -->
         <filtros-component/>
         <!-- DATATABLE -->
-        <data-table-component @openModalEdicaoPai="openModalEdicao"/>
+        <data-table-component @openModalEdicaoPai="openModalEdicao()"/>
       </div>
     </q-page>
 

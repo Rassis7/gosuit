@@ -33,6 +33,7 @@
 
 <script>
 import BaseDataTable from '../BaseDataTable.vue'
+import {mapMutations} from 'vuex'
 
 export default {
   name: 'DataTableProdutoComponent',
@@ -77,6 +78,7 @@ export default {
     }
   },
   methods: {
+    ...mapMutations(['SET_STATE_PRODUTO']),
     request ({ pagination, filter }) {
       const self = this
 
@@ -107,9 +109,8 @@ export default {
       }, 1000)
     },
     editarProduto (props) {
-      // Tirar a reativade
-      const params = props.row
-      this.$emit('openModalEdicaoPai', params)
+      this.SET_STATE_PRODUTO(props.row)
+      this.$emit('openModalEdicaoPai')
     },
     inativarProduto (prop) {
       this.$q.dialog({

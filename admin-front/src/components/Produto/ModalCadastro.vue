@@ -13,25 +13,23 @@
           <div class="form row gutter-md">
 
             <div class="col-xs-12 col-sm-6">
-              <q-input v-model="paramsComputed.nome" float-label="Qual o nome do produto?" :max-height="80"/>
+              <q-input v-model="produtoComputed.nome" float-label="Qual o nome do produto?" :max-height="80"/>
             </div>
 
             <div class="col-xs-12 col-sm-6">
-              <q-input v-model="paramsComputed.valor" v-money="money" float-label="Valor do produto"/>
+              <q-input v-money="produtoComputed.valor" v-model="produtoComputed.valor" float-label="Valor do produto"/>
             </div>
 
             <div class="col-12">
               <q-input
-                v-model="paramsComputed.descricao"
+                v-model="produtoComputed.descricao"
                 type="textarea"
                 float-label="Qual a descrição do produto?"
                 :max-height="255"
                 rows="2"
               />
             </div>
-
           </div>
-
         </div>
 
         <q-toolbar slot="footer" color="white">
@@ -49,31 +47,24 @@
 <script>
 import BaseModal from '../BaseModal'
 import { maskMoney } from '../../util/constants'
+import { mapGetters, mapMutations } from 'vuex'
 
 export default {
   name: 'ModalCadastroComponent',
   extends: BaseModal,
   data () {
     return {
-      money: maskMoney,
-      stateParams: {
-        nome: null,
-        valor: null,
-        descricao: null
-      }
+      money: maskMoney
     }
   },
   props: {
     opened: {
       type: Boolean,
       default: false
-    },
-    params: {
-      type: Object,
-      default: null
     }
   },
   computed: {
+    ...mapGetters(['getProduto']),
     openedComputed: {
       get: function () {
         return this.opened
@@ -82,13 +73,14 @@ export default {
         return this.opend
       }
     },
-    paramsComputed: () => {
-      if (this.params === null) return this.stateParams
-      return this.params
+    produtoComputed: function () {
+      return this.getProduto
     }
   },
   methods: {
+    ...mapMutations(['RESETAR_STATE_PRODUTOS']),
     fecharModal () {
+      this.RESETAR_STATE_PRODUTOS()
       this.$emit('fecharModalPai')
     }
   }
