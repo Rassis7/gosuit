@@ -6,27 +6,26 @@
         <!-- FILTROS -->
         <filtros-component/>
         <!-- DATATABLE -->
-        <data-table-component @openModalEdicaoPai="openModalEdicao()"/>
+        <data-table-component @openModalEdicaoPai="openModalEdicao(1)"/>
       </div>
     </q-page>
 
     <!--Float button-->
     <q-page-sticky position="bottom-right" :offset="[18, 18]">
       <float-button-component
-        @openModalCadastroPai="openedModalCadastroPai = !openedModalCadastroPai, paramsModalCadastro = null"
-        @openModalCadastroMassaPai="openedModalCadastroMassaPai = !openedModalCadastroMassaPai"
+        @openModalCadastroPai="openModalEdicao(1)"
+        @openModalCadastroMassaPai="openModalEdicao(2)"
       />
     </q-page-sticky>
 
     <modal-cadastro-component
-      :params="paramsModalCadastro"
       :opened="openedModalCadastroPai"
-      @fecharModalPai="openedModalCadastroPai = false"
+      @fecharModalPai="closeModal(1)"
     />
 
     <modal-cadastro-lote-component
       :opened="openedModalCadastroMassaPai"
-      @fecharModalPai="openedModalCadastroMassaPai = false"
+      @fecharModalPai="closeModal(2)"
     />
 
   </div>
@@ -52,15 +51,25 @@ export default {
   data () {
     return {
       openedModalCadastroPai: false,
-      openedModalCadastroMassaPai: false,
-      paramsModalCadastro: null
+      openedModalCadastroMassaPai: false
     }
   },
   methods: {
-    ...mapMutations(['UPDATE_TITLE_NAVBAR']),
-    openModalEdicao (params) {
-      this.paramsModalCadastro = params
-      this.openedModalCadastroPai = true
+    ...mapMutations(['SET_STATE_MESA', 'RESETAR_STATE_MESA', 'UPDATE_TITLE_NAVBAR']),
+    openModalEdicao (modal) {
+      if (modal === 1) {
+        this.openedModalCadastroPai = true
+      } else {
+        this.openedModalCadastroMassaPai = true
+      }
+    },
+    closeModal (modal) {
+      this.RESETAR_STATE_MESA()
+      if (modal === 1) {
+        this.openedModalCadastroPai = false
+      } else {
+        this.openedModalCadastroMassaPai = false
+      }
     }
   },
   created: function () {

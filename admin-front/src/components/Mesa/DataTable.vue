@@ -37,6 +37,8 @@
 
 <script>
 import BaseDataTable from '../BaseDataTable.vue'
+import {mapMutations} from 'vuex'
+
 export default {
   name: 'DataTableMesaComponent',
   extends: BaseDataTable,
@@ -88,6 +90,7 @@ export default {
     }
   },
   methods: {
+    ...mapMutations(['SET_STATE_MESA']),
     request ({ pagination, filter }) {
       const self = this
 
@@ -97,17 +100,17 @@ export default {
       var data = {
         rows: [{
           id: 1,
-          numero: '#A12',
+          apelido: '#A12',
           praca: 3,
-          lugares: 4,
-          ativo: 'SIM'
+          quantidadeLugares: 4,
+          status: 'SIM'
         },
         {
           id: 2,
-          numero: '#A10',
+          apelido: '#A10',
           praca: 3,
-          lugares: 6,
-          ativo: 'SIM'
+          quantidadeLugares: 6,
+          status: 'SIM'
         }],
         rowsNumber: 1
       }
@@ -118,7 +121,8 @@ export default {
       }, 1000)
     },
     editarMesa (props) {
-      this.$emit('openModalEdicaoPai', props.row)
+      this.SET_STATE_MESA(props.row)
+      this.$emit('openModalEdicaoPai')
     },
     inativarMesa (props) {
       const self = this

@@ -12,15 +12,15 @@
 
           <div class="form row gutter-md">
             <div class="col-4">
-              <q-input v-model="paramsComputed.praca" :max-height="45" float-label="Qual a praça da mesa?"/>
+              <q-input v-model="mesaComputed.praca" :max-height="45" float-label="Qual a praça da mesa?"/>
             </div>
 
             <div class="col-4">
-              <q-input v-model="paramsComputed.numero" float-label="Nome/Número da mesa"/>
+              <q-input v-model="mesaComputed.apelido" float-label="Nome/Número da mesa"/>
             </div>
 
             <div class="col-4">
-              <q-input v-model="paramsComputed.lugares" float-label="Qual a quantidade de cadeiras?"/>
+              <q-input v-model="mesaComputed.quantidadeLugares" float-label="Qual a quantidade de cadeiras?"/>
             </div>
           </div>
 
@@ -40,6 +40,7 @@
 
 <script>
 import BaseModal from '../BaseModal'
+import { mapGetters, mapMutations } from 'vuex'
 
 export default {
   name: 'ModalCadastroMesaComponenet',
@@ -56,30 +57,31 @@ export default {
     }
   },
   props: {
-    params: {
-      type: Object,
-      default: null
+    opened: {
+      type: Boolean,
+      default: false
     }
   },
   computed: {
-    paramsComputed: {
+    ...mapGetters(['getMesa']),
+    openedComputed: {
       get: function () {
-        if (this.params === null) return this.stateParams
-        return this.params
+        return this.opened
       },
-      set: function (params) {
-        return this.params
+      set: function (opened) {
+        return this.opened
       }
+    },
+    mesaComputed: function () {
+      return this.getMesa
     }
   },
   methods: {
+    ...mapMutations(['RESETAR_STATE_MESA']),
     fecharModal () {
+      this.RESETAR_STATE_MESA()
       this.$emit('fecharModalPai')
     }
   }
 }
 </script>
-
-<style lang="scss">
-
-</style>
