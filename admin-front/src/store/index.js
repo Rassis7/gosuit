@@ -4,6 +4,7 @@ import Vuex from 'vuex'
 import navBar from './navBar'
 import produto from './produto'
 import mesa from './mesa'
+import categoria from './categoria'
 
 Vue.use(Vuex)
 
@@ -17,7 +18,8 @@ export default function (/* { ssrContext } */) {
     modules: {
       navBar,
       produto,
-      mesa
+      mesa,
+      categoria
     }
   })
 
