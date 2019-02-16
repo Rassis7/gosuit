@@ -74,7 +74,8 @@ module.exports = function (ctx) {
         'QCheckbox',
         'QFab',
         'QFabAction',
-        'QSelect'
+        'QSelect',
+        'QUploader'
       ],
       directives: [
         'Ripple'

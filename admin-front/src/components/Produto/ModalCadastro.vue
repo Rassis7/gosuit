@@ -12,12 +12,16 @@
 
           <div class="form row gutter-md">
 
+            <div class="col-12">
+              <uploader ref="uploaderComponenetFilho"/>
+            </div>
+
             <div class="col-xs-12 col-sm-6">
               <q-input v-model="produtoComputed.nome" float-label="Qual o nome do produto?" :max-height="80"/>
             </div>
 
             <div class="col-xs-12 col-sm-6">
-              <q-input v-money="produtoComputed.valor" v-model="produtoComputed.valor" float-label="Valor do produto"/>
+              <q-input v-model="produtoComputed.valor" float-label="Valor do produto"/>
             </div>
 
             <div class="col-12">
@@ -35,7 +39,7 @@
         <q-toolbar slot="footer" color="white">
             <div class="col-12 text-right">
               <q-btn color="faded" label="Fechar" class="q-mr-sm" @click="fecharModal"/>
-              <q-btn color="primary" label="Salvar" class="q-mr-sm"/>
+              <q-btn color="primary" label="Salvar" class="q-mr-sm" @click="salvar(produtoComputed)"/>
             </div>
         </q-toolbar>
 
@@ -46,16 +50,15 @@
 
 <script>
 import BaseModal from '../BaseModal'
-import { maskMoney } from '../../util/constants'
+import Uploader from '../Uploader'
 import { mapGetters, mapMutations } from 'vuex'
 
 export default {
   name: 'ModalCadastroComponent',
   extends: BaseModal,
+  components: {Uploader},
   data () {
-    return {
-      money: maskMoney
-    }
+    return {}
   },
   props: {
     opened: {
@@ -82,6 +85,10 @@ export default {
     fecharModal () {
       this.RESETAR_STATE_PRODUTOS()
       this.$emit('fecharModalPai')
+    },
+    salvar (param) {
+      // chamar o component de upload
+      return this.$refs.uploaderComponenetFilho.uploadFile()
     }
   }
 }
