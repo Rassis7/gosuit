@@ -14,10 +14,10 @@
       </q-tr>
 
       <q-tr slot="body" slot-scope="props" :props="props">
-        <q-td key="numero">{{props.row.numero}}</q-td>
+        <q-td key="numero">{{props.row.apelido}}</q-td>
         <q-td key="praca">{{ props.row.praca }}</q-td>
-        <q-td key="lugares">{{ props.row.lugares }}</q-td>
-        <q-td key="ativo">{{ props.row.ativo }}</q-td>
+        <q-td key="lugares">{{ props.row.quantidadeLugares }}</q-td>
+        <q-td key="ativo">{{ props.row.status }}</q-td>
         <q-td key="acoes">
           <q-btn size="md" round dense color="red" icon="remove" class="q-mr-sm" @click="inativarMesa(props)">
             <q-tooltip>Inativar</q-tooltip>
