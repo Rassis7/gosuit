@@ -25,6 +25,8 @@
 </template>
 
 <script>
+import { mapMutations } from 'vuex'
+
 export default {
   name: 'cardsCategoriaComponent',
   data () {
@@ -33,11 +35,23 @@ export default {
     }
   },
   methods: {
+    ...mapMutations(['SET_STATE_CATEGORIA']),
     editar (e) {
-      return true
+      this.SET_STATE_CATEGORIA(e)
+      this.$emit('openModalCadastroPai')
     },
     remover (c) {
-      return true
+      this.$q.dialog({
+        title: 'Atenção!',
+        message: `Deseja excluir a categoria ${c.nome}?`,
+        color: 'primary',
+        ok: 'Salvar',
+        cancel: 'Cancelar'
+      }).then(nome => {
+        // Excluir
+      }).catch(() => {
+        return true // para não da erro no console
+      })
     }
   },
   created: function () {

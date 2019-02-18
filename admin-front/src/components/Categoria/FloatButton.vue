@@ -2,7 +2,7 @@
   <div>
     <q-fab icon="more_vert" direction="up" color="primary">
 
-      <q-fab-action color="secondary" class="white" icon="add_box">
+      <q-fab-action color="secondary" class="white" icon="add_box" @click="openModalCadastro">
         <q-tooltip anchor="center left" self="center right" :offset="[10, 10]">
           Cadastrar categorias
         </q-tooltip>
@@ -14,7 +14,12 @@
 
 <script>
 export default {
-  name: 'floatButtonCategoriaComponenet'
+  name: 'floatButtonCategoriaComponenet',
+  methods: {
+    openModalCadastro () {
+      this.$emit('openModalPai')
+    }
+  }
 }
 </script>
 

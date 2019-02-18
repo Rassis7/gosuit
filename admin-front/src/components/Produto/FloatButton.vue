@@ -8,7 +8,7 @@
         </q-tooltip>
       </q-fab-action>
 
-      <q-fab-action color="secondary" class="white" icon="ballot">
+      <q-fab-action color="secondary" class="white" icon="ballot" @click="abirModalCategorias">
         <q-tooltip anchor="center left" self="center right" :offset="[10, 10]">
           Cadastrar categoria
         </q-tooltip>
@@ -24,6 +24,9 @@ export default {
   methods: {
     abirModalCadastro () {
       this.$emit('openedModal')
+    },
+    abirModalCategorias () {
+      this.$emit('abirModalCategoriasPai')
     }
   }
 }
