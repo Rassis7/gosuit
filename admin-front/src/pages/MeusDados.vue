@@ -8,7 +8,7 @@
           <div class="row gutter-md">
 
             <div class="col-12">
-              <h2 class="text-center">Sobre o estabelecimento</h2>
+              <h3 class="text-center">Sobre o estabelecimento</h3>
             </div>
 
             <div class="col-xs-6">
@@ -30,7 +30,7 @@
           <div class="row gutter-md">
 
             <div class="col-12">
-              <h2 class="text-center">Endereço</h2>
+              <h3 class="text-center">Endereço</h3>
             </div>
 
             <div class="col-xs-4">
@@ -68,7 +68,7 @@
           <div class="row gutter-md">
 
             <div class="col-12">
-              <h2 class="text-center">Contatos</h2>
+              <h3 class="text-center">Contatos</h3>
             </div>
 
             <div class="col-xs-12">
@@ -80,26 +80,45 @@
             </div>
 
             <div class="col-xs-3">
-             <q-input v-model="telefone1" float-label="Telefone"/>
+             <q-input v-model="telefone1" float-label="Telefone 1"/>
             </div>
 
             <div class="col-xs-3">
-             <q-input v-model="telefone2" float-label="Telefone"/>
+             <q-input v-model="telefone2" float-label="Telefone 2"/>
             </div>
           </div>
 
+          <div class="row gutter-md">
+
+            <div class="col-12">
+              <h3 class="text-center">Logo</h3>
+            </div>
+
+            <div class="col-12 footer">
+             <uploader-component/>
+            </div>
+
+          </div>
         </div>
 
       </div>
     </q-page>
+
+    <q-page-sticky position="bottom-right" :offset="[18, 18]">
+      <float-button-component/>
+    </q-page-sticky>
+
   </div>
 </template>
 
 <script>
 import {mapMutations} from 'vuex'
+import FloatButtonComponent from '../components/MeusDados/FloatButton'
+import UploaderComponent from '../components/Uploader'
 
 export default {
   name: 'meusDadosPage',
+  components: {FloatButtonComponent, UploaderComponent},
   methods: {
     ...mapMutations(['UPDATE_TITLE_NAVBAR'])
   },
@@ -110,7 +129,7 @@ export default {
 </script>
 
 <style lang="scss">
-.gutter-md{
-  padding: 15px, 15px 15px !important;
+.footer{
+  margin-bottom: 50px;
 }
 </style>
