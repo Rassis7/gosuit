@@ -1,5 +1,5 @@
 <template>
-  <div class="col-10 offset-1">
+  <div class="col-xs-12 col-lg-10 offset-lg-1">
     <q-table
       title="Listagem de mesas"
       :data="serverData"
@@ -14,13 +14,26 @@
       </q-tr>
 
       <q-tr slot="body" slot-scope="props" :props="props">
-        <q-td key="numero">{{props.row.apelido}}</q-td>
-        <q-td key="praca">{{ props.row.praca }}</q-td>
-        <q-td key="lugares">{{ props.row.quantidadeLugares }}</q-td>
-        <q-td key="ativo">{{ props.row.status }}</q-td>
+        <q-td key="ativo">
+          <q-toggle
+            :value="props.row.status"
+            :label="(props.row.status == true)?'SIM':'NÃO'"
+            left-label
+            @change="ativarInativarItem(props.row)"
+          />
+        </q-td>
+        <q-td key="numero">
+          {{props.row.apelido}}
+        </q-td>
+        <q-td key="praca">
+          {{ props.row.praca }}
+        </q-td>
+        <q-td key="lugares">
+          {{ props.row.quantidadeLugares }}
+        </q-td>
         <q-td key="acoes">
-          <q-btn size="md" round dense color="red" icon="remove" class="q-mr-sm" @click="inativarMesa(props)">
-            <q-tooltip>Inativar</q-tooltip>
+          <q-btn size="md" round dense color="red" icon="remove" class="q-mr-sm" @click="deletarMesa(props)">
+            <q-tooltip>Deletar</q-tooltip>
           </q-btn>
           <q-btn size="md" round dense color="warning" icon="edit" class="q-mr-sm" @click="editarMesa(props)">
             <q-tooltip>Editar</q-tooltip>
@@ -46,6 +59,14 @@ export default {
     return {
       columns: [
         {
+          name: 'at',
+          required: true,
+          label: 'Ativo',
+          align: 'left',
+          field: 'ativo',
+          sortable: true
+        },
+        {
           name: 'ms',
           required: true,
           label: 'Mesa/Número',
@@ -67,14 +88,6 @@ export default {
           label: 'Quantidade de lugares',
           align: 'left',
           field: 'lugares',
-          sortable: true
-        },
-        {
-          name: 'at',
-          required: true,
-          label: 'Ativo',
-          align: 'left',
-          field: 'ativo',
           sortable: true
         },
         {
@@ -103,14 +116,14 @@ export default {
           apelido: '#A12',
           praca: 3,
           quantidadeLugares: 4,
-          status: 'SIM'
+          status: true
         },
         {
           id: 2,
           apelido: '#A10',
           praca: 3,
           quantidadeLugares: 6,
-          status: 'SIM'
+          status: false
         }],
         rowsNumber: 1
       }
@@ -124,7 +137,7 @@ export default {
       this.SET_STATE_MESA(props.row)
       this.$emit('openModalEdicaoPai')
     },
-    inativarMesa (props) {
+    deletarMesa (props) {
       const self = this
 
       self.$q.dialog({
@@ -135,8 +148,14 @@ export default {
       }).then(() => {
         // faz o axios removendo a parada
         this.request({ pagination: this.serverPagination, filter: this.filter })
-        self.$q.notify({message: 'Item inativado com sucesso', color: 'dark', icon: 'check_circle_outline', position: 'top-right'})
+        self.$q.notify({message: 'Item deletado com sucesso', color: 'dark', icon: 'check_circle_outline', position: 'top-right'})
       })
+    },
+    ativarInativarItem (value) {
+      // mudar no front-end
+      value.status = !value.status
+
+      // fazer um axios alterando o estado no backend
     }
   }
 }

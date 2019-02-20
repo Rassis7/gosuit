@@ -81,7 +81,8 @@ module.exports = function (ctx) {
         'QCardMain',
         'QCardMedia',
         'QCardSeparator',
-        'QCardActions'
+        'QCardActions',
+        'QToggle'
       ],
       directives: [
         'Ripple'

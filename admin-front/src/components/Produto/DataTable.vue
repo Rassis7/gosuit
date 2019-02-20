@@ -1,5 +1,5 @@
 <template>
-  <div class="col-10 offset-1">
+  <div class="col-xs-12 col-lg-10 offset-lg-1">
     <q-table
       title="Listagem de produtos"
       :data="serverData"
@@ -14,12 +14,19 @@
       </q-tr>
 
       <q-tr slot="body" slot-scope="props" :props="props">
+        <q-td key="ativo">
+          <q-toggle
+            :value="props.row.ativo"
+            :label="(props.row.ativo == true)?'SIM':'NÃO'"
+            left-label
+            @change="ativarInativarItem(props.row)"
+          />
+        </q-td>
         <q-td key="nome">{{props.row.nome}}</q-td>
         <q-td key="valor">{{ props.row.valor | formatReal }}</q-td>
-        <q-td key="ativo">{{ props.row.ativo }}</q-td>
         <q-td key="acoes">
-          <q-btn size="md" round dense color="red" icon="remove" class="q-mr-sm" @click="inativarProduto(props)">
-            <q-tooltip>Inativar</q-tooltip>
+          <q-btn size="md" round dense color="red" icon="remove" class="q-mr-sm" @click="deletarProduto(props)">
+            <q-tooltip>Deletar</q-tooltip>
           </q-btn>
           <q-btn size="md" round dense color="warning" icon="edit" class="q-mr-sm" @click="editarProduto(props)">
             <q-tooltip>Editar</q-tooltip>
@@ -42,6 +49,14 @@ export default {
     return {
       columns: [
         {
+          name: 'at',
+          required: true,
+          label: 'Ativo',
+          align: 'left',
+          field: 'ativo',
+          sortable: true
+        },
+        {
           name: 'nm',
           required: true,
           label: 'Nome',
@@ -55,14 +70,6 @@ export default {
           label: 'Valor',
           align: 'left',
           field: 'valor',
-          sortable: true
-        },
-        {
-          name: 'at',
-          required: true,
-          label: 'Ativo',
-          align: 'left',
-          field: 'ativo',
           sortable: true
         },
         {
@@ -89,15 +96,15 @@ export default {
         rows: [{
           id: 1,
           nome: 'Cerveja RED',
-          valor: 10.00,
-          ativo: `SIM`,
+          valor: 10,
+          ativo: true,
           descricao: null
         },
         {
           id: 1,
           nome: 'Hamburguer picanha',
-          valor: 3000.00,
-          ativo: `SIM`,
+          valor: 3000,
+          ativo: false,
           descricao: 'Pão, ovo, bife 120g ...'
         }],
         rowsNumber: 1
@@ -112,7 +119,7 @@ export default {
       this.SET_STATE_PRODUTO(props.row)
       this.$emit('openModalEdicaoPai')
     },
-    inativarProduto (prop) {
+    deletarProduto (prop) {
       this.$q.dialog({
         title: 'Atenção',
         message: 'Deseja realmente deletar esse produto?',
@@ -121,8 +128,14 @@ export default {
       }).then(() => {
         // faz o axios removendo a parada
         this.request({ pagination: this.serverPagination, filter: this.filter })
-        this.$q.notify({message: 'Item inativado com sucesso', color: 'dark', icon: 'check_circle_outline', position: 'top-right'})
+        this.$q.notify({message: 'Item deletado com sucesso', color: 'dark', icon: 'check_circle_outline', position: 'top-right'})
       })
+    },
+    ativarInativarItem (value) {
+      // Mudar no front
+      value.ativo = !value.ativo
+
+      // chamar um axios para isso
     }
   }
 }

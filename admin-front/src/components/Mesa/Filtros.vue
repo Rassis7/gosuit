@@ -1,22 +1,22 @@
 <template>
-  <div class="col-10 offset-1">
+  <div class="col-xs-12 col-lg-10 offset-lg-1">
     <q-list separator>
       <q-collapsible icon="search" label="Filtros" class="form">
 
         <div class="row gutter-md">
-          <div class="col-xs-12 col-sm-3">
-            <q-input v-model="praca" float-label="Qual a praça da mesa?"/>
+          <div class="col-xs-12 col-sm-4">
+            <q-input v-model="praca" float-label="Qual a praça?"/>
           </div>
 
-          <div class="col-xs-12 col-sm-3">
-            <q-input v-model="identificacao" float-label="Nome/Número da mesa"/>
+          <div class="col-xs-12 col-sm-4">
+            <q-input v-model="identificacao" float-label="Nome/Número"/>
           </div>
 
-          <div class="col-xs-12 col-sm-3">
-            <q-input v-model="qtdCadeiras" float-label="Qual a quantidade de cadeiras?"/>
+          <div class="col-xs-12 col-sm-4">
+            <q-input v-model="qtdCadeiras" float-label="Quantas cadeiras?"/>
           </div>
 
-          <div class="col-xs-12 col-sm-3">
+          <div class="col-xs-12 col-sm-4">
             <q-select
               v-model="ativo"
               float-label="Ativo?"

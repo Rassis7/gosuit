@@ -1,5 +1,5 @@
 <template>
-  <div class="col-10 offset-1">
+  <div class="col-xs-12 col-lg-10 offset-lg-1">
     <q-list separator>
       <q-collapsible icon="search" label="Filtros" class="form">
         <div class="row gutter-md">
