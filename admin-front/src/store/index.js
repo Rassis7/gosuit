@@ -5,6 +5,7 @@ import navBar from './navBar'
 import produto from './produto'
 import mesa from './mesa'
 import categoria from './categoria'
+import endereco from './endereco'
 
 Vue.use(Vuex)
 
@@ -19,7 +20,8 @@ export default function (/* { ssrContext } */) {
       navBar,
       produto,
       mesa,
-      categoria
+      categoria,
+      endereco
     }
   })
 

@@ -3,7 +3,7 @@
     <q-page padding>
       <div class="row">
 
-        <div class="col-xs-12 col-lg-10 offset-lg-1">
+        <div class="col-xs-9 offset-xs-1 col-lg-10 offset-lg-1">
 
           <div class="row gutter-md">
 
@@ -11,15 +11,15 @@
               <h3 class="text-center">Sobre o estabelecimento</h3>
             </div>
 
-            <div class="col-xs-6">
+            <div class="col-xs-12 col-sm-6">
               <q-input v-model="razaoSocial" disable="true" float-label="Razão sócial"/>
             </div>
 
-            <div class="col-xs-6">
+            <div class="col-xs-12 col-sm-6">
               <q-input v-model="cnpj" disable="true" float-label="CNPJ"/>
             </div>
 
-            <div class="col-xs-6">
+            <div class="col-xs-12 col-sm-6">
               <q-input v-model="nomeFantasia" float-label="Nome fantasia"/>
             </div>
 
@@ -33,31 +33,36 @@
               <h3 class="text-center">Endereço</h3>
             </div>
 
-            <div class="col-xs-4">
+            <div class="col-xs-12 col-sm-4">
              <q-input v-model="cep" float-label="CEP"/>
             </div>
 
-            <div class="col-xs-8">
+            <div class="col-xs-12 col-sm-8">
              <q-input v-model="logradouro" float-label="Logradouro"/>
             </div>
 
-            <div class="col-xs-6">
-             <q-input v-model="uf" float-label="Estado"/>
+            <div class="col-xs-12 col-sm-6">
+             <q-select
+                v-model="uf"
+                float-label="Estado"
+                radio
+                :options="getUfList"
+              />
             </div>
 
-            <div class="col-xs-6">
+            <div class="col-xs-12 col-sm-6">
              <q-input v-model="cidade" float-label="Cidade"/>
             </div>
 
-            <div class="col-xs-6">
+            <div class="col-xs-12 col-sm-">
              <q-input v-model="Bairro" float-label="Bairro"/>
             </div>
 
-            <div class="col-xs-3">
+            <div class="col-xs-6 col-sm-3">
              <q-input type="number" v-model="numero" float-label="Número"/>
             </div>
 
-            <div class="col-xs-3">
+            <div class="col-xs-6 col-sm-">
              <q-input v-model="complemento" float-label="Complemento"/>
             </div>
 
@@ -75,15 +80,15 @@
              <q-input v-model="nomeContato" float-label="Nome para contato"/>
             </div>
 
-            <div class="col-xs-6">
+            <div class="col-xs-12 col-sm-6">
              <q-input v-model="email" float-label="Email"/>
             </div>
 
-            <div class="col-xs-3">
+            <div class="col-xs-6 col-sm-3">
              <q-input v-model="telefone1" float-label="Telefone 1"/>
             </div>
 
-            <div class="col-xs-3">
+            <div class="col-xs-6 col-sm-3">
              <q-input v-model="telefone2" float-label="Telefone 2"/>
             </div>
           </div>
@@ -112,13 +117,16 @@
 </template>
 
 <script>
-import {mapMutations} from 'vuex'
+import {mapMutations, mapGetters} from 'vuex'
 import FloatButtonComponent from '../components/MeusDados/FloatButton'
 import UploaderComponent from '../components/Uploader'
 
 export default {
   name: 'meusDadosPage',
   components: {FloatButtonComponent, UploaderComponent},
+  computed: {
+    ...mapGetters(['getUfList'])
+  },
   methods: {
     ...mapMutations(['UPDATE_TITLE_NAVBAR'])
   },
@@ -130,6 +138,6 @@ export default {
 
 <style lang="scss">
 .footer{
-  margin-bottom: 50px;
+  margin-bottom: 100px;
 }
 </style>
