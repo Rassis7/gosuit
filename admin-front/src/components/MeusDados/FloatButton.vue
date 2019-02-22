@@ -3,7 +3,6 @@
     <q-btn
       round
       color="primary"
-      @click="method"
       class="fixed"
       icon="save"
       size="lg"

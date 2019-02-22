@@ -1,4 +1,4 @@
-import { SET_ENDERECO_BUSCADO_POR_CEP } from './mutationTypes'
+import { SET_ENDERECO_BUSCADO_POR_CEP, RESETAR_STATE_ENDERECO } from './mutationTypes'
 import axios from 'axios'
 
 const state = {
@@ -44,20 +44,21 @@ const getters = {
 }
 
 const actions = {
-  async getBuscarEnderecoCepAction ({commit}, cep) {
-    await axios.get(`viacep.com.br/ws/${cep}/json/`)
-      .then(e => {
-        commit(SET_ENDERECO_BUSCADO_POR_CEP, e.data)
-      })
-      .catch(e => {
-        console.error(e)
-      })
+  async buscarEnderecoCepAction ({commit}, cep) {
+    await axios.get(`http://viacep.com.br/ws/${cep}/json/`)
+      .then(e => commit(SET_ENDERECO_BUSCADO_POR_CEP, e.data))
+      .catch(e => console.error(e))
   }
 }
 
 const mutations = {
+  [RESETAR_STATE_ENDERECO] (state) {
+    for (const prop of Object.getOwnPropertyNames(state)) {
+      state[prop] = null
+    }
+  },
   [SET_ENDERECO_BUSCADO_POR_CEP] (state, dados) {
-    let { logradouro, uf, cidade } = dados
+    let { logradouro, uf, localidade } = dados
 
     if (logradouro) {
       state.logradouro = logradouro
@@ -67,8 +68,8 @@ const mutations = {
       state.uf = uf
     }
 
-    if (cidade) {
-      state.cidade = cidade
+    if (localidade) {
+      state.cidade = localidade
     }
   }
 }
