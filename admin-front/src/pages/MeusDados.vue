@@ -16,7 +16,7 @@
             </div>
 
             <div class="col-xs-12 col-sm-6">
-              <q-input v-model="meusDadosComputed.cnpj" :disable="true" float-label="CNPJ"/>
+              <q-input v-model="meusDadosComputed.cnpj" :disable="true" float-label="CNPJ" v-mask="'##.###.###/####-##'"/>
             </div>
 
             <div class="col-xs-12 col-sm-6">
@@ -38,6 +38,7 @@
                 v-model="dadosEnderecoComputed.cep"
                 float-label="CEP"
                 @keyup="buscarCep(dadosEnderecoComputed.cep)"
+                v-mask="'#####-###'"
               />
             </div>
 
@@ -89,11 +90,11 @@
             </div>
 
             <div class="col-xs-6 col-sm-3">
-             <q-input v-model="meusDadosComputed.telefone1" float-label="Telefone 1"/>
+             <q-input v-model="meusDadosComputed.telefone1" float-label="Telefone 1" v-mask="['(##) #####-####', '(##) ####-####']"/>
             </div>
 
             <div class="col-xs-6 col-sm-3">
-             <q-input v-model="meusDadosComputed.telefone2" float-label="Telefone 2"/>
+             <q-input v-model="meusDadosComputed.telefone2" float-label="Telefone 2" v-mask="['(##) #####-####', '(##) ####-####']"/>
             </div>
           </div>
 
