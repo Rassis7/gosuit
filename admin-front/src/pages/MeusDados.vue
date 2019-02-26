@@ -34,16 +34,20 @@
             </div>
 
             <div class="col-xs-12 col-sm-4">
-             <q-input v-model="meusDadosComputed.cep" float-label="CEP" @keyup="buscarCep"/>
+             <q-input
+                v-model="dadosEnderecoComputed.cep"
+                float-label="CEP"
+                @keyup="buscarCep(dadosEnderecoComputed.cep)"
+              />
             </div>
 
             <div class="col-xs-12 col-sm-8">
-             <q-input v-model="meusDadosComputed.logradouro" float-label="Logradouro"/>
+             <q-input v-model="dadosEnderecoComputed.logradouro" float-label="Logradouro"/>
             </div>
 
             <div class="col-xs-12 col-sm-6">
              <q-select
-                v-model="meusDadosComputed.uf"
+                v-model="dadosEnderecoComputed.uf"
                 float-label="Estado"
                 radio
                 :options="getUfList"
@@ -51,19 +55,19 @@
             </div>
 
             <div class="col-xs-12 col-sm-6">
-             <q-input v-model="meusDadosComputed.cidade" float-label="Cidade"/>
+             <q-input v-model="dadosEnderecoComputed.cidade" float-label="Cidade"/>
             </div>
 
             <div class="col-xs-12 col-sm-">
-             <q-input v-model="meusDadosComputed.Bairro" float-label="Bairro"/>
+             <q-input v-model="dadosEnderecoComputed.bairro" float-label="Bairro"/>
             </div>
 
             <div class="col-xs-6 col-sm-3">
-             <q-input type="number" v-model="meusDadosComputed.numero" float-label="Número"/>
+             <q-input type="number" v-model="dadosEnderecoComputed.numero" float-label="Número"/>
             </div>
 
             <div class="col-xs-6 col-sm-">
-             <q-input v-model="meusDadosComputed.complemento" float-label="Complemento"/>
+             <q-input v-model="dadosEnderecoComputed.complemento" float-label="Complemento"/>
             </div>
 
           </div>
@@ -125,46 +129,38 @@ export default {
   name: 'meusDadosPage',
   components: {FloatButtonComponent, UploaderComponent},
   computed: {
-    ...mapGetters(['getUfList', 'getMeusDados', 'getDadosCEP']),
+    ...mapGetters(['getUfList', 'getMeusDados', 'getDadosEndereco']),
     meusDadosComputed: {
       get: function () {
         return this.getMeusDados
       },
-      set: function (e) {
-        return this.e
+      set: function (getMeusDados) {
+        return this.getMeusDados
       }
     },
     dadosCepComputed: function () {
       return this.getDadosCEP
+    },
+    dadosEnderecoComputed: {
+      get: function () {
+        return this.getDadosEndereco
+      },
+      set: function (getDadosEndereco) {
+        return this.getDadosEndereco
+      }
     }
   },
   methods: {
-    ...mapMutations(['UPDATE_TITLE_NAVBAR', 'RESETAR_STATE_ENDERECO']),
+    ...mapMutations(['UPDATE_TITLE_NAVBAR']),
     ...mapActions(['buscarEnderecoCepAction']),
-    buscarCep: function () {
-      const cep = this.meusDadosComputed.cep
+    buscarCep: function (cep) {
+      const self = this
 
       if (/^[0-9]{5}-[0-9]{3}$/.test(cep)) {
-        // Resetar a state global
-        this.RESETAR_STATE_ENDERECO()
-
         // CHAMAR A BUSCA DO CEP
-        this.buscarEnderecoCepAction(cep)
-          .then(() => {
-            debugger
-            var { logradouro, uf, cidade } = this.dadosCepComputed
-
-            if (logradouro !== null) {
-              this.meusDadosComputed.logradouro = logradouro
-            }
-
-            if (uf !== null) {
-              this.meusDadosComputed.uf = uf
-            }
-
-            if (cidade !== null) {
-              this.meusDadosComputed.cidade = cidade
-            }
+        self.buscarEnderecoCepAction(cep)
+          .catch(er => {
+            return true
           })
       }
     }

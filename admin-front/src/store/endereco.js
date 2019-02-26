@@ -31,22 +31,26 @@ const state = {
     { label: 'Sergipe', value: 'SE' },
     { label: 'Tocantins', value: 'TO' }
   ],
-  dadosCEP: {
+  dadosEndereco: {
     logradouro: null,
     uf: null,
-    cidade: null
+    cidade: null,
+    cep: null,
+    bairro: null,
+    numero: null,
+    complemento: null
   }
 }
 
 const getters = {
-  getDadosCEP: state => state.dadosCEP,
+  getDadosEndereco: state => state.dadosEndereco,
   getUfList: state => state.ufList
 }
 
 const actions = {
   async buscarEnderecoCepAction ({commit}, cep) {
     await axios.get(`http://viacep.com.br/ws/${cep}/json/`)
-      .then(e => commit(SET_ENDERECO_BUSCADO_POR_CEP, e.data))
+      .then(e => commit('SET_ENDERECO_BUSCADO_POR_CEP', e.data))
       .catch(e => console.error(e))
   }
 }
@@ -58,18 +62,26 @@ const mutations = {
     }
   },
   [SET_ENDERECO_BUSCADO_POR_CEP] (state, dados) {
-    let { logradouro, uf, localidade } = dados
+    let { logradouro, uf, localidade, bairro, cep } = dados
 
     if (logradouro) {
-      state.logradouro = logradouro
+      state.dadosEndereco.logradouro = logradouro
     }
 
     if (uf) {
-      state.uf = uf
+      state.dadosEndereco.uf = uf
     }
 
     if (localidade) {
-      state.cidade = localidade
+      state.dadosEndereco.cidade = localidade
+    }
+
+    if (bairro) {
+      state.dadosEndereco.bairro = bairro
+    }
+
+    if (cep) {
+      state.dadosEndereco.cep = cep
     }
   }
 }
