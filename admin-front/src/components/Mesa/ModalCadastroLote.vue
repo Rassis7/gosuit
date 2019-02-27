@@ -1,36 +1,28 @@
 <template>
   <div>
-    <q-modal v-model="opendComputed" :content-css="{minWidth: '50vw', minHeight: '30vh'}" @hide="fecharModal">
-      <q-modal-layout>
-        <q-toolbar slot="header">
-          <q-toolbar-title>
-            Cadastro em lote de mesas
-          </q-toolbar-title>
-        </q-toolbar>
+    <base-modal :opened="opened">
+      <section slot="header">Cadastro em lote de mesas</section>
 
-        <div class="modal-body">
-
-          <div class="form row gutter-md">
-            <div class="col-6">
-              <q-input v-model="praca" float-label="Qual a praça da mesa?"/>
-            </div>
-
-            <div class="col-6">
-              <q-input v-model="quantidadeCriadas" float-label="Deseja criar quantas mesas em lote?" type="number"/>
-            </div>
+      <section slot="body">
+        <div class="form row gutter-md">
+          <div class="col-6">
+            <q-input v-model="praca" float-label="Qual a praça da mesa?"/>
           </div>
 
+          <div class="col-6">
+            <q-input v-model="quantidadeCriadas" float-label="Deseja criar quantas mesas em lote?" type="number"/>
+          </div>
         </div>
+      </section>
 
-        <q-toolbar slot="footer" color="white">
-            <div class="col-12 text-right">
-              <q-btn color="faded" label="Fechar" class="q-mr-sm" @click="fecharModal"/>
-              <q-btn color="primary" label="Salvar" class="q-mr-sm"/>
-            </div>
-        </q-toolbar>
+      <section slot="footer">
+        <div class="col-12 text-right">
+          <q-btn color="faded" label="Fechar" class="q-mr-sm" @click="fecharModal"/>
+          <q-btn color="primary" label="Salvar" class="q-mr-sm"/>
+        </div>
+      </section>
+    </base-modal>
 
-      </q-modal-layout>
-    </q-modal>
   </div>
 </template>
 
@@ -39,11 +31,18 @@ import BaseModal from '../BaseModal.vue'
 
 export default {
   name: 'ModalCadastroLoteComponent',
-  extends: BaseModal,
+  // extends: BaseModal,
+  components: {BaseModal},
   data () {
     return {
       praca: null,
       quantidadeCriadas: null
+    }
+  },
+  props: {
+    opened: {
+      type: Boolean,
+      default: false
     }
   },
   methods: {

@@ -1,9 +1,8 @@
 <template>
   <div>
-    <div v-if="usuarios.length == 0">
+    <div v-if="usuarios.length == 0" class="justify-center row">
       <q-alert
-        class="full-width"
-        color="orange"
+        color="faded"
         icon="warning"
         message="OPSSS...Nenhum usuário cadastrado para esse grupo!"
         />
@@ -17,7 +16,7 @@
 
           <q-card-actions>
             <q-btn flat color="warning" label="editar" class="q-mr-sm" @click="editar(u)"/>
-            <q-btn flat color="primary" label="remover" class="q-mr-sm" @click="remover(u)"/>
+            <q-btn flat color="primary" label="remover" class="q-mr-sm" @click="remover(u)" :disable="!!u.usuarioLogado"/>
           </q-card-actions>
         </q-card>
   </div>

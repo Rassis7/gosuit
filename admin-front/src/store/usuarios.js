@@ -31,12 +31,6 @@ const actions = {
       nome: 'joao',
       usuarioLogado: false,
       grupo: 'caixas'
-    },
-    {
-      id: 3,
-      nome: 'noralvino',
-      usuarioLogado: false,
-      grupo: 'atendentes'
     }]
 
     commit('SET_STATE_USUARIO', params)

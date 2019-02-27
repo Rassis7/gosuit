@@ -6,10 +6,8 @@
           <h5>GRUPO ADMINISTRADOR</h5>
         </div>
 
-        <div class="administrador-body">
-          <draggable class="list-group" :list="grupoAdminComputed" group="usuarios">
+        <div class="body" padding>
             <card-component :usuarios="grupoAdminComputed"/>
-          </draggable>
         </div>
 
       </section>
@@ -19,10 +17,8 @@
           <h5>GRUPO ATENDENTE</h5>
         </div>
 
-        <div class="atendente-body">
-          <draggable class="list-group" :list="grupoAtendentesComputed" group="usuarios">
+        <div class="body">
             <card-component :usuarios="grupoAtendentesComputed"/>
-          </draggable>
         </div>
       </section>
 
@@ -31,10 +27,8 @@
           <h5>GRUPO CAIXA</h5>
         </div>
 
-        <div class="caixa-body">
-          <draggable class="list-group" :list="grupoCaixasComputed" group="usuarios">
+        <div class="body">
             <card-component :usuarios="grupoCaixasComputed"/>
-          </draggable>
         </div>
       </section>
 
@@ -48,13 +42,12 @@
 
 <script>
 import {mapMutations, mapActions, mapGetters} from 'vuex'
-import draggable from 'vuedraggable'
 import FloatButtonComponent from '../components/Usuarios/FloatButton'
 import CardComponent from '../components/Usuarios/Cards'
 
 export default {
   name: 'usuariosPage',
-  components: {FloatButtonComponent, CardComponent, draggable},
+  components: {FloatButtonComponent, CardComponent},
   methods: {
     ...mapMutations(['UPDATE_TITLE_NAVBAR']),
     ...mapActions(['loadUsuariosAction'])
@@ -102,6 +95,6 @@ export default {
 .administrador, .atendente, .caixa {
   min-height: 20vh;
   margin-block-start: 5vh;
-  background-color: $cinzaf3;
+  background-color: $cinzaee;
 }
 </style>
