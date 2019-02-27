@@ -36,7 +36,7 @@
           <q-item-main label="Meus dados" sublabel="Ediçåo dos dados pessoais, como Nome fantasia, Contato e etc" />
         </q-item>
 
-        <q-item @click.native="$router.push('/categoria')">
+        <q-item @click.native="$router.push('/usuarios')">
           <q-item-side icon="supervised_user_circle"/>
           <q-item-main label="Usuários" sublabel="Editar/criar usuários, definir permissões e grupos" />
         </q-item>

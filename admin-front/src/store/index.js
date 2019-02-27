@@ -7,6 +7,7 @@ import mesa from './mesa'
 import categoria from './categoria'
 import endereco from './endereco'
 import meusDados from './meusDados'
+import usuarios from './usuarios'
 
 Vue.use(Vuex)
 
@@ -23,7 +24,8 @@ export default function (/* { ssrContext } */) {
       mesa,
       categoria,
       endereco,
-      meusDados
+      meusDados,
+      usuarios
     }
   })
 
